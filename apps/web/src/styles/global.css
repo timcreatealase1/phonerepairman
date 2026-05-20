@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #0057b8;
+    --brand-dk: #003d82;
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight;
+    line-height: 1.15;
+  }
+
+  /* Account for the sticky bottom CTA bar on mobile */
+  @media (max-width: 768px) {
+    body {
+      padding-bottom: 4.25rem;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-bold transition;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply bg-brand-500 text-white hover:bg-brand-700 active:translate-y-px;
+  }
+  .btn-white {
+    @apply bg-white text-brand-500 hover:bg-brand-50;
+  }
+  .btn-outline-white {
+    @apply border-2 border-white/70 bg-transparent text-white hover:bg-white/10;
+  }
+  .btn-outline {
+    @apply border-2 border-brand-500 bg-transparent text-brand-500 hover:bg-brand-50;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-6;
+  }
+  .section {
+    @apply py-12 sm:py-16;
+  }
+  .section-title {
+    @apply text-2xl sm:text-3xl font-extrabold tracking-tight text-center;
+  }
+  .section-sub {
+    @apply mx-auto mt-3 max-w-prose text-center text-ink-muted;
+  }
+}

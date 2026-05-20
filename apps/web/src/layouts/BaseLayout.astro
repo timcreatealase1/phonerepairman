@@ -1,0 +1,101 @@
+---
+import '~/styles/global.css';
+import { site } from '~/data/site';
+import {
+  localBusinessSchema,
+  websiteSchema,
+  webPageSchema,
+  graphDocument,
+} from '~/lib/seo/schema';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import StickyCTABar from '~/components/StickyCTABar.astro';
+
+interface Props {
+  /** Page title — must be unique, <=60 chars, ends with "| Phone Repairman Muswellbrook" */
+  title: string;
+  /** Meta description — unique, <=155 chars */
+  description: string;
+  /** Override the auto-derived canonical URL if needed */
+  canonical?: string;
+  /** Extra JSON-LD nodes to merge into the @graph for this page */
+  schemaNodes?: object[];
+  /** Path to a unique OG image. Defaults to a brand-tile shipped at /og-default.png */
+  ogImage?: string;
+  /** Suppress search engines (preview / staging only) */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  schemaNodes = [],
+  ogImage = '/og-default.png',
+  noindex = false,
+} = Astro.props;
+
+const url = canonical ?? new URL(Astro.url.pathname, site.url).href;
+const ogImageUrl = new URL(ogImage, site.url).href;
+
+const graph = graphDocument([
+  localBusinessSchema(),
+  websiteSchema(),
+  webPageSchema({ url, title, description }),
+  ...schemaNodes,
+]);
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0057b8" />
+    <link rel="canonical" href={url} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_AU" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {/* Fonts — preconnect + display=swap keeps LCP low */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+
+    {/* Favicon */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {/* JSON-LD */}
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand-500 focus:px-3 focus:py-2 focus:text-white">
+      Skip to content
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <StickyCTABar />
+  </body>
+</html>
