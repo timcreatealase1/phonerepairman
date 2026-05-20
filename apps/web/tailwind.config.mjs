@@ -18,12 +18,11 @@ export default {
           ink: '#001f4d',
         },
         ink: {
-          DEFAULT: '#111827',
-          muted: '#4b5563',
-          light: '#6b7280',
+          500: '#6b7280',
+          600: '#4b5563',
+          900: '#111827',
         },
         surface: {
-          DEFAULT: '#ffffff',
           alt: '#f3f4f6',
           tint: '#e8f1fc',
         },

@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply bg-white text-ink font-sans antialiased;
+    @apply bg-white text-ink-900 font-sans antialiased;
     line-height: 1.6;
   }
 
@@ -59,6 +59,6 @@
     @apply text-2xl sm:text-3xl font-extrabold tracking-tight text-center;
   }
   .section-sub {
-    @apply mx-auto mt-3 max-w-prose text-center text-ink-muted;
+    @apply mx-auto mt-3 max-w-prose text-center text-ink-600;
   }
 }
