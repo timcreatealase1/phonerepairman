@@ -1,0 +1,27 @@
+---
+// Visual breadcrumb. The matching BreadcrumbList JSON-LD is generated per
+// page via lib/seo/schema.ts breadcrumbSchema(items) and passed to
+// BaseLayout's `schemaNodes` prop — keep the two in sync.
+
+interface Props {
+  items: { name: string; href?: string }[];
+}
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="border-b border-ink-900/10 bg-paper">
+  <ol class="container-x flex flex-wrap items-center gap-2 py-3 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-600">
+    {items.map((item, i) => (
+      <>
+        {i > 0 && <li aria-hidden="true" class="text-ink-500">/</li>}
+        <li>
+          {item.href ? (
+            <a href={item.href} class="hover:text-brand-500">{item.name}</a>
+          ) : (
+            <span class="text-ink-900">{item.name}</span>
+          )}
+        </li>
+      </>
+    ))}
+  </ol>
+</nav>

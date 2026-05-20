@@ -73,13 +73,13 @@ export const serviceSchema = (opts: {
   ...(opts.url ? { url: opts.url } : {}),
 });
 
-export const breadcrumbSchema = (items: { name: string; url: string }[]) => ({
+export const breadcrumbSchema = (items: { name: string; href?: string; url?: string }[]) => ({
   '@type': 'BreadcrumbList',
   itemListElement: items.map((item, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: item.name,
-    item: item.url,
+    ...(item.href ?? item.url ? { item: item.href ?? item.url } : {}),
   })),
 });
 

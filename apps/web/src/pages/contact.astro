@@ -1,0 +1,197 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import Icon from '~/components/Icon.astro';
+import { site } from '~/data/site';
+import { breadcrumbSchema } from '~/lib/seo/schema';
+
+const title = `Contact — ${site.name}`;
+const description = `Phone, SMS, email or walk in: ${site.phone.display} · ${site.address.street}, ${site.address.suburb} NSW. Mon–Fri 9:30am–5:00pm.`;
+
+const breadcrumbs = [
+  { name: 'Home',    href: site.url },
+  { name: 'Contact', href: `${site.url}/contact` },
+];
+
+const schemaNodes = [breadcrumbSchema(breadcrumbs)];
+
+const channels = [
+  {
+    icon: 'phone' as const,
+    label: 'Call',
+    value: site.phone.display,
+    href: site.phone.href,
+    note: 'Mon–Fri 9:30am – 5:00pm',
+  },
+  {
+    icon: 'message-circle' as const,
+    label: 'SMS',
+    value: site.sms.display,
+    href: site.sms.href,
+    note: 'For quotes and quick questions',
+  },
+  {
+    icon: 'mail' as const,
+    label: 'Email',
+    value: site.email.display,
+    href: site.email.href,
+    note: 'For business and partner enquiries',
+  },
+  {
+    icon: 'message-circle' as const,
+    label: 'Facebook Messenger',
+    value: '@phonescreenrepairman',
+    href: site.messenger.href,
+    external: true,
+    note: 'Quickest after hours',
+  },
+];
+
+const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(
+  `${site.address.street}, ${site.address.suburb} NSW ${site.address.postcode}`
+)}&output=embed`;
+---
+
+<BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
+  <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Contact' }]} />
+
+  {/* HERO */}
+  <section class="bg-paper">
+    <div class="container-x py-14 lg:py-20">
+      <div class="max-w-3xl">
+        <Eyebrow>Contact</Eyebrow>
+        <h1 class="mt-4 display-1 text-ink-900">
+          {site.address.street}, {site.address.suburb}.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-700">
+          Walk in any time during opening hours. Or call, SMS or message us —
+          whichever suits. Same-day service on most in-stock repairs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* CONTACT GRID */}
+  <section class="bg-paper pb-16">
+    <div class="container-x grid gap-px overflow-hidden rounded-md border border-ink-900/10 bg-ink-900/10 sm:grid-cols-2 lg:grid-cols-4">
+      {channels.map((c) => (
+        <a
+          href={c.href}
+          target={c.external ? '_blank' : undefined}
+          rel={c.external ? 'noopener' : undefined}
+          class="group flex flex-col gap-4 bg-paper p-6 transition hover:bg-white"
+        >
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brand-50 text-brand-500">
+            <Icon name={c.icon} size={20} />
+          </span>
+          <div>
+            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-brand-500">{c.label}</p>
+            <p class="mt-2 text-lg font-bold text-ink-900 group-hover:text-brand-700">{c.value}</p>
+            <p class="mt-2 text-sm text-ink-600">{c.note}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* MAP + DETAILS */}
+  <section class="section bg-white">
+    <div class="container-x grid gap-10 lg:grid-cols-[1fr,1.3fr] lg:gap-16">
+      <div>
+        <Eyebrow>Find us</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Bridge Street, Muswellbrook.</h2>
+        <address class="mt-6 not-italic">
+          <p class="text-lg text-ink-900 leading-relaxed">
+            {site.address.street}<br />
+            {site.address.suburb} {site.address.state} {site.address.postcode}<br />
+            <span class="text-sm text-ink-600">{site.address.note}</span>
+          </p>
+        </address>
+
+        <a
+          href={site.address.directions}
+          target="_blank"
+          rel="noopener"
+          class="mt-6 inline-flex items-center gap-2 font-semibold text-brand-500 hover:text-brand-700"
+        >
+          <Icon name="directions" size={18} /> Get directions
+        </a>
+
+        <div class="mt-10">
+          <Eyebrow tone="muted">Opening hours</Eyebrow>
+          <dl class="mt-3 grid grid-cols-2 max-w-sm gap-y-1 text-ink-900">
+            {site.hoursDisplay.map((h) => (
+              <>
+                <dt class="text-ink-600">{h.label}</dt>
+                <dd class="text-right font-medium">{h.value}</dd>
+              </>
+            ))}
+          </dl>
+        </div>
+
+        <div class="mt-10">
+          <Eyebrow tone="muted">We accept</Eyebrow>
+          <p class="mt-3 text-ink-700">{site.paymentAccepted.join(' · ')}</p>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-md border border-ink-900/10">
+        <iframe
+          src={mapEmbed}
+          title={`Map showing ${site.name} at ${site.address.street}, ${site.address.suburb}`}
+          class="block h-[420px] w-full"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  {/* WHAT TO EXPECT */}
+  <section class="section bg-paper">
+    <div class="container-x grid gap-10 lg:grid-cols-[1fr,1.4fr] lg:gap-16">
+      <div>
+        <Eyebrow>Walking in?</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Here's how it goes.</h2>
+      </div>
+      <ol class="space-y-6 text-[1.05rem] leading-relaxed text-ink-700">
+        <li class="flex gap-5">
+          <span class="shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-brand-500">01</span>
+          <span><strong class="text-ink-900">Bring the device.</strong> If it's a laptop, include the charger. If it's a phone, your unlock code helps — we'll handle it on a signal-isolated bench either way.</span>
+        </li>
+        <li class="flex gap-5">
+          <span class="shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-brand-500">02</span>
+          <span><strong class="text-ink-900">We diagnose and quote, in writing.</strong> Most issues we identify on the spot or within 24 hours. No fix, no fee on diagnosis.</span>
+        </li>
+        <li class="flex gap-5">
+          <span class="shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-brand-500">03</span>
+          <span><strong class="text-ink-900">You decide whether to proceed.</strong> If yes, we order parts (most stocked) and give you a written turnaround.</span>
+        </li>
+        <li class="flex gap-5">
+          <span class="shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-brand-500">04</span>
+          <span><strong class="text-ink-900">Pick up, pay, leave.</strong> Cash, EFTPOS, credit card, Afterpay — whatever suits.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  {/* CLOSING CTA */}
+  <section class="bg-brand-900 text-white">
+    <div class="container-x py-14 text-center">
+      <p class="eyebrow-on-dark">Call. SMS. Walk in. Book onsite.</p>
+      <h2 class="mt-3 display-2">{site.phone.display}</h2>
+      <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
+        <a href={site.phone.href} class="btn btn-white">
+          <Icon name="phone" size={18} /> Call
+        </a>
+        <a href={site.sms.href} class="btn btn-outline-white">
+          <Icon name="message-circle" size={18} /> SMS
+        </a>
+        <a href={site.address.directions} target="_blank" rel="noopener" class="btn btn-outline-white">
+          <Icon name="directions" size={18} /> Directions
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

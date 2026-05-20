@@ -1,0 +1,184 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import MonoLabel from '~/components/MonoLabel.astro';
+import PhotoSlot from '~/components/PhotoSlot.astro';
+import Icon from '~/components/Icon.astro';
+import { site } from '~/data/site';
+import { breadcrumbSchema } from '~/lib/seo/schema';
+
+const title = `About — ${site.name}`;
+const description = `Locally owned device repair shop in Muswellbrook NSW. Trading since ${site.yearFounded}. AWA-authorised for HP, Acer and Lexmark; direct Epson partner.`;
+
+const yearsTrading = new Date().getFullYear() - site.yearFounded;
+
+const breadcrumbs = [
+  { name: 'Home',  href: site.url },
+  { name: 'About', href: `${site.url}/about` },
+];
+
+const schemaNodes = [breadcrumbSchema(breadcrumbs)];
+
+const segments = [
+  {
+    title: 'Walk-in retail',
+    blurb: 'Locals dropping in with phones, tablets and laptops that need fixing fast — usually same day.',
+  },
+  {
+    title: 'Small business',
+    blurb: 'Tradies, shops and allied health. Bring in faulty gear, or book us onsite for fleet work.',
+  },
+  {
+    title: 'MSP & OEM partners',
+    blurb: 'Field-service hands for IT companies running customers across the Hunter — white-label or co-branded.',
+  },
+  {
+    title: 'Mining IT & enterprise',
+    blurb: 'Bulk device repair and supply for mining operations, councils and schools across the Upper Hunter.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
+  <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'About' }]} />
+
+  {/* HERO */}
+  <section class="bg-paper">
+    <div class="container-x grid items-center gap-12 py-14 lg:grid-cols-[1.2fr,1fr] lg:gap-16 lg:py-20">
+      <div>
+        <Eyebrow>About</Eyebrow>
+        <h1 class="mt-4 display-1 text-ink-900">
+          Local repairs, not parcel-shipping.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-700">
+          Phone Repairman has been fixing devices in Muswellbrook since {site.yearFounded}.
+          We are not a small JB Hi-Fi — we are a device services business that happens to
+          sell hardware as part of the service.
+        </p>
+        <ul class="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-x-8">
+          <MonoLabel>Est. {site.yearFounded} · {yearsTrading} years in the Hunter</MonoLabel>
+          <MonoLabel>{site.address.street}, {site.address.suburb}</MonoLabel>
+          <MonoLabel>OEM Authorised Agents</MonoLabel>
+          <MonoLabel>Walk-in + onsite + B2B</MonoLabel>
+        </ul>
+      </div>
+      <div>
+        <PhotoSlot
+          alt={`Phone Repairman shop on ${site.address.street}, ${site.address.suburb}`}
+          aspect="4/5"
+          caption="Bridge St · Muswellbrook"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* PROOF BAR */}
+  <section class="bg-brand-500 text-white">
+    <div class="container-x py-5">
+      <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.18em]">
+        <li>EST. {site.yearFounded}</li>
+        <li aria-hidden="true" class="text-white/40">·</li>
+        <li>OEM Authorised Agents</li>
+        <li aria-hidden="true" class="text-white/40">·</li>
+        <li>Walk-in + Onsite</li>
+        <li aria-hidden="true" class="text-white/40">·</li>
+        <li>Locally owned</li>
+      </ul>
+    </div>
+  </section>
+
+  {/* STORY */}
+  <section class="section bg-paper">
+    <div class="container-x grid gap-12 lg:grid-cols-[1fr,1.4fr] lg:gap-16">
+      <div>
+        <Eyebrow>What we are</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">A repair shop with B2B muscle.</h2>
+      </div>
+      <div class="space-y-5 text-[1.05rem] leading-relaxed text-ink-700">
+        <p>
+          Phone Repairman is the trading name for a Muswellbrook-based device repair and
+          IT services business. We started as an iPhone repair shop in {site.yearFounded} and
+          grew with the town — first phones, then tablets, then laptops, then gaming consoles.
+          Today, we hold OEM authorised-agent status with HP, Acer and Lexmark, and a direct
+          service partnership with Epson.
+        </p>
+        <p>
+          What that means for customers: warranty work for those brands is routed through us
+          via the AWA / ARA partner network, so machines stay in the Hunter instead of being
+          shipped to a city service centre. It's the same coverage as factory service, with a
+          local number and a face to talk to.
+        </p>
+        <p>
+          We are also the field-service arm for MSPs and OEM warranty channels operating
+          across the Upper Hunter. If you run an IT business out of Newcastle, Maitland or
+          further afield and need hands on the ground in Muswellbrook, Singleton or Scone —
+          that's us.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* AUTHORISATIONS */}
+  <section class="section bg-white">
+    <div class="container-x grid gap-10 lg:grid-cols-[1fr,1.2fr] lg:items-start lg:gap-16">
+      <div>
+        <Eyebrow>Brand authorisations</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Brand-authorised, not just brand-aware.</h2>
+        <p class="mt-4 text-ink-700">
+          The difference between an authorised agent and a generic repair shop:
+          genuine parts, manufacturer warranty cover, and an open line to the OEM
+          when a fault needs escalation.
+        </p>
+      </div>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {site.authorizations.map((a) => (
+          <li class="flex items-start gap-4 rounded-md border border-ink-900/10 bg-paper p-5">
+            <span class="mt-0.5 text-brand-500"><Icon name="shield-check" size={22} /></span>
+            <div>
+              <p class="text-lg font-bold text-ink-900">{a.brand}</p>
+              <p class="mt-0.5 font-mono text-xs uppercase tracking-wider text-ink-600">{a.kind}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* WHO WE SERVE */}
+  <section class="section bg-paper">
+    <div class="container-x">
+      <div class="mb-12 max-w-2xl">
+        <Eyebrow>Who we serve</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Four customers, one phone number.</h2>
+      </div>
+      <ul class="grid gap-px overflow-hidden rounded-md border border-ink-900/10 bg-ink-900/10 sm:grid-cols-2">
+        {segments.map((s, i) => (
+          <li class="bg-paper p-7">
+            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-brand-500">
+              {String(i + 1).padStart(2, '0')}
+            </p>
+            <p class="mt-2 text-xl font-bold text-ink-900">{s.title}</p>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-700">{s.blurb}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* CLOSING CTA */}
+  <section class="bg-brand-900 text-white">
+    <div class="container-x py-14 text-center">
+      <p class="eyebrow-on-dark">Bring it in. Send it in. Book us onsite.</p>
+      <h2 class="mt-3 display-2">{site.phone.display} · {site.address.street}, {site.address.suburb}</h2>
+      <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
+        <a href={site.phone.href} class="btn btn-white">
+          <Icon name="phone" size={18} /> Call {site.phone.display}
+        </a>
+        <a href="/contact" class="btn btn-outline-white">
+          <Icon name="map-pin" size={18} /> Find us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
