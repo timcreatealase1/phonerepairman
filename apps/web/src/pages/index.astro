@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Icon from '~/components/Icon.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import MonoLabel from '~/components/MonoLabel.astro';
+import PhotoSlot from '~/components/PhotoSlot.astro';
 import { site, services } from '~/data/site';
 import { serviceSchema, faqPageSchema } from '~/lib/seo/schema';
 
@@ -8,15 +11,15 @@ const title = `${site.name} — Authorised device repair in Muswellbrook & the U
 const description =
   'Authorised Agent for HP, Acer and Lexmark, and direct Epson partner in Muswellbrook. Walk-in phone, laptop, tablet and gaming repairs. Est. 2014.';
 
-// Hero badges — short, scannable trust signals.
-const heroBadges = [
-  { icon: 'check' as const,       text: 'Walk-ins welcome' },
-  { icon: 'clock' as const,       text: 'Same-day service' },
-  { icon: 'shield-check' as const, text: 'OEM Authorised Agents' },
-  { icon: 'map-pin' as const,     text: `${site.address.suburb} · Est. ${site.yearFounded}` },
+const yearsTrading = new Date().getFullYear() - site.yearFounded;
+
+const proofBar = [
+  `EST. ${site.yearFounded}`,
+  'OEM Authorised Agents',
+  'Walk-in + Onsite',
+  'Locally owned',
 ];
 
-// Homepage FAQ — 4 starter Qs. Drives FAQPage schema and the on-page FAQ block.
 const faqs = [
   {
     question: 'Do I need to book, or can I just walk in?',
@@ -34,14 +37,14 @@ const faqs = [
       'Most common phone repairs (screen, battery, charging port) are completed same-day when the part is in stock. Laptops and gaming consoles are typically 1–3 business days. We give you a written turnaround on drop-off.',
   },
   {
-    question: 'Do you do data recovery?',
-    answer:
-      'Yes — recovery of photos, contacts and documents from broken or unresponsive phones, laptops, hard drives and USB devices. Bring the device in for a no-obligation assessment.',
-  },
-  {
     question: 'Do you service the Upper Hunter beyond Muswellbrook?',
     answer:
       'Yes. We serve Singleton, Scone, Aberdeen, Denman, Merriwa, Murrurundi and the broader Hunter Valley — both via drop-off at our Bridge Street shop and onsite for business customers.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer:
+      'Cash, EFTPOS, credit card, Afterpay, Zip Pay, Wizpay, Latitude and PayPal — pick whatever suits.',
   },
 ];
 
@@ -49,7 +52,7 @@ const schemaNodes = [
   serviceSchema({
     name: 'Device Repair',
     description:
-      'Phone, tablet, laptop and gaming console repairs in Muswellbrook NSW. AWA-authorized for HP, Acer and Lexmark; direct Epson partner.',
+      'Phone, tablet, laptop and gaming console repairs in Muswellbrook NSW. Authorised Agent for HP, Acer and Lexmark; direct Epson partner.',
     serviceType: 'Consumer Electronics Repair',
     url: site.url,
   }),
@@ -58,54 +61,79 @@ const schemaNodes = [
 ---
 
 <BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
-  {/* HERO */}
-  <section
-    class="relative overflow-hidden text-white"
-    style="background-image: linear-gradient(135deg, #003d82 0%, #0057b8 100%);"
-  >
-    <div class="container-x py-14 sm:py-20 text-center">
-      <p class="mb-3 text-sm font-medium uppercase tracking-widest text-white/70">
-        Muswellbrook · Upper Hunter · since {site.yearFounded}
-      </p>
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-        Authorized device repair, in your town.
-      </h1>
-      <p class="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-white/90">
-        Phone Repairman is the local <strong class="text-white">Authorised Agent for HP, Acer and Lexmark</strong>
-        — and a direct Epson service partner — serving the Upper Hunter from Muswellbrook NSW.
-      </p>
+  {/* HERO — asymmetric 2-col, paper bg, photo on the right */}
+  <section class="bg-paper">
+    <div class="container-x grid items-center gap-12 py-12 sm:py-16 lg:grid-cols-[1.15fr,1fr] lg:gap-16 lg:py-24">
+      <div>
+        <Eyebrow>Muswellbrook · Upper Hunter NSW</Eyebrow>
+        <h1 class="mt-4 display-1 text-ink-900">
+          Authorised device repair,<br class="hidden sm:block" />
+          in your town.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-700">
+          Phone Repairman is the local <strong class="text-ink-900">Authorised Agent for HP, Acer and Lexmark</strong>
+          — and a direct Epson service partner — serving the Upper Hunter from Muswellbrook NSW
+          since {site.yearFounded}.
+        </p>
 
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href={site.phone.href} class="btn btn-white">
-          <Icon name="phone" size={18} /> Call {site.phone.display}
-        </a>
-        <a href={site.sms.href} class="btn btn-outline-white">
-          <Icon name="message-circle" size={18} /> SMS us
-        </a>
-        <a href={site.address.directions} target="_blank" rel="noopener" class="btn btn-outline-white">
-          <Icon name="directions" size={18} /> Directions
-        </a>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.phone.href} class="btn btn-primary">
+            <Icon name="phone" size={18} /> Call {site.phone.display}
+          </a>
+          <a href={site.sms.href} class="btn btn-outline">
+            <Icon name="message-circle" size={18} /> SMS us
+          </a>
+          <a href={site.address.directions} target="_blank" rel="noopener" class="btn btn-outline">
+            <Icon name="directions" size={18} /> Directions
+          </a>
+        </div>
+
+        <ul class="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-x-8">
+          <MonoLabel>Est. {site.yearFounded} · {yearsTrading} years in the Hunter</MonoLabel>
+          <MonoLabel>{site.address.street}, {site.address.suburb}</MonoLabel>
+          <MonoLabel>Walk-in + onsite service</MonoLabel>
+          <MonoLabel>OEM Authorised Agents</MonoLabel>
+        </ul>
       </div>
 
-      <ul class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-white/15 pt-7 text-sm">
-        {heroBadges.map((b) => (
-          <li class="flex items-center gap-2 text-white/90">
-            <Icon name={b.icon} size={16} />
-            {b.text}
-          </li>
+      <div class="relative">
+        <PhotoSlot
+          alt="Phone Repairman shopfront on Bridge Street, Muswellbrook"
+          aspect="4/5"
+          caption="Shopfront · Bridge St"
+          loading="eager"
+        />
+        {/* Mono badge floats over the photo's top-right corner — decorative
+            credential, becomes more grounded once a real photo is in place. */}
+        <div class="absolute -top-3 right-4 rounded-sm bg-brand-500 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-white shadow">
+          OEM Authorised
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* PROOF BAR — full-bleed brand blue, mono caps */}
+  <section class="bg-brand-500 text-white">
+    <div class="container-x py-5">
+      <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.18em]">
+        {proofBar.map((label, i) => (
+          <>
+            {i > 0 && <li aria-hidden="true" class="text-white/40">·</li>}
+            <li>{label}</li>
+          </>
         ))}
       </ul>
     </div>
   </section>
 
-  {/* OPEN / CLOSED + SHORT NAP STRIP */}
-  <section aria-label="Open status and location" class="border-b border-ink-900/10 bg-surface-tint">
-    <div class="container-x flex flex-col items-center justify-between gap-3 py-4 sm:flex-row sm:gap-6 text-sm">
+  {/* OPEN STATUS / NAP STRIP — utility line */}
+  <section aria-label="Open status and location" class="border-b border-ink-900/10 bg-paper">
+    <div class="container-x flex flex-col items-center justify-between gap-2 py-3 sm:flex-row text-sm">
       <p class="flex items-center gap-2 text-ink-900">
         <Icon name="clock" size={16} class="text-brand-500" />
         <span id="open-status" class="font-semibold">Mon–Fri, 9:30am – 5:00pm</span>
       </p>
-      <p class="flex items-center gap-2 text-ink-600">
+      <p class="hidden sm:flex items-center gap-2 text-ink-600">
         <Icon name="map-pin" size={16} class="text-brand-500" />
         {site.address.street}, {site.address.suburb} NSW {site.address.postcode}
       </p>
@@ -115,46 +143,70 @@ const schemaNodes = [
     </div>
   </section>
 
-  {/* SERVICES */}
-  <section class="section bg-white">
+  {/* SERVICES — left-aligned editorial grid with mono service numbers */}
+  <section class="section bg-paper">
     <div class="container-x">
-      <h2 class="section-title">What we fix</h2>
-      <p class="section-sub">Same-day where the part is in stock. Written turnaround on drop-off.</p>
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((s) => (
+      <div class="mb-12 max-w-2xl">
+        <Eyebrow>What we fix</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Five services, one workshop, every brand.</h2>
+        <p class="mt-4 text-lg text-ink-700">
+          Same-day where the part is in stock. Written turnaround on drop-off. Bring it in,
+          send it in, or book us onsite.
+        </p>
+      </div>
+
+      <div class="grid gap-px overflow-hidden rounded-md border border-ink-900/10 bg-ink-900/10 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s, i) => (
           <a
             href={`/services/${s.slug}`}
-            class="group rounded-xl border border-ink-900/10 bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card-hover"
+            class="group relative flex flex-col gap-4 bg-paper p-7 transition hover:bg-white"
           >
-            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-50 text-brand-500">
-              <Icon name={s.icon as any} size={22} />
+            <div class="flex items-start justify-between">
+              <span class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand-500">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <Icon name={s.icon as any} size={22} class="text-brand-500" />
             </div>
-            <h3 class="text-lg font-bold text-ink-900">{s.name}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink-600">{s.short}</p>
-            <p class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 group-hover:gap-2 group-hover:transition-all">
-              Learn more <Icon name="arrow-right" size={14} />
+            <div>
+              <h3 class="text-xl font-bold text-ink-900">{s.name}</h3>
+              <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-700">{s.short}</p>
+            </div>
+            <p class="mt-auto font-mono text-[0.7rem] uppercase tracking-wider text-ink-500">
+              {s.devices.slice(0, 4).join(' · ')}
             </p>
+            <span class="absolute right-5 bottom-5 inline-flex h-7 w-7 items-center justify-center rounded-full border border-ink-900/15 text-ink-700 transition group-hover:border-brand-500 group-hover:bg-brand-500 group-hover:text-white">
+              <Icon name="arrow-right" size={14} />
+            </span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  {/* AUTHORIZATIONS STRIP */}
-  <section class="section bg-surface-alt">
-    <div class="container-x">
-      <h2 class="section-title">Brand-authorised, not just brand-aware.</h2>
-      <p class="section-sub">
-        Warranty and out-of-warranty repairs handled locally in Muswellbrook — same coverage as
-        factory service, with no parcel shipping out of the Hunter.
-      </p>
-      <ul class="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+  {/* AUTHORISATIONS — paired editorial layout: statement + brand grid */}
+  <section class="section bg-white">
+    <div class="container-x grid gap-12 lg:grid-cols-[1fr,1.2fr] lg:items-start lg:gap-16">
+      <div>
+        <Eyebrow>Brand authorisations</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Brand-authorised, not just brand-aware.</h2>
+        <p class="mt-4 text-lg text-ink-700">
+          Warranty and out-of-warranty repairs for these brands are handled locally in
+          Muswellbrook — same coverage as factory service, with no parcel shipping out of
+          the Hunter.
+        </p>
+        <p class="mt-3 text-sm text-ink-600">
+          See the <a href="/faqs" class="font-semibold text-brand-500 hover:underline">FAQ</a>
+          for how the AWA / ARA authorised-agent network works.
+        </p>
+      </div>
+
+      <ul class="grid gap-3 sm:grid-cols-2">
         {site.authorizations.map((a) => (
-          <li class="flex items-start gap-3 rounded-lg border border-ink-900/10 bg-white p-4">
-            <span class="mt-0.5 text-brand-500"><Icon name="shield-check" size={20} /></span>
+          <li class="flex items-start gap-4 rounded-md border border-ink-900/10 bg-paper p-5">
+            <span class="mt-0.5 text-brand-500"><Icon name="shield-check" size={22} /></span>
             <div>
-              <p class="font-bold text-ink-900">{a.brand}</p>
-              <p class="text-sm text-ink-600">{a.kind}</p>
+              <p class="text-lg font-bold text-ink-900">{a.brand}</p>
+              <p class="mt-0.5 font-mono text-xs uppercase tracking-wider text-ink-600">{a.kind}</p>
             </div>
           </li>
         ))}
@@ -162,46 +214,50 @@ const schemaNodes = [
     </div>
   </section>
 
-  {/* TRUST / REVIEWS */}
-  <section class="section bg-white">
+  {/* REVIEWS — editorial pull-quote layout */}
+  <section class="section bg-paper">
     <div class="container-x">
-      <h2 class="section-title">What customers say</h2>
-      <p class="section-sub">Real reviews from real customers across the Upper Hunter.</p>
-      {/* TODO (Tim): replace with three real Google / FB reviews before launch. Phase 4 automates this. */}
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
-        {[1, 2, 3].map(() => (
-          <article class="rounded-xl border border-ink-900/10 bg-white p-6 shadow-card">
-            <div class="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars">
-              {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-current" />)}
-            </div>
-            <p class="mt-3 text-ink-900">
-              {/* Placeholder copy — swap with a real customer quote. */}
-              "Quick turnaround on my [device] — back in my pocket the same afternoon. Honest pricing
-              and they explained what went wrong."
-            </p>
-            <p class="mt-4 text-sm font-semibold text-ink-600">— Customer, Muswellbrook</p>
-          </article>
-        ))}
-      </div>
-      <p class="mt-8 text-center text-sm text-ink-600">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <Eyebrow>What customers say</Eyebrow>
+          <h2 class="mt-3 display-2 text-ink-900">Real quotes from real customers.</h2>
+        </div>
         <a href={site.social.facebook} target="_blank" rel="noopener" class="font-semibold text-brand-500 hover:underline">
           See all reviews on Facebook →
         </a>
-      </p>
+      </div>
+
+      {/* TODO (Tim): replace the three placeholders with real Google / FB reviews. */}
+      <div class="grid gap-6 md:grid-cols-3">
+        {[1, 2, 3].map(() => (
+          <article class="flex flex-col rounded-md border border-ink-900/10 bg-white p-7">
+            <div class="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars">
+              {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-current" />)}
+            </div>
+            <blockquote class="mt-4 text-ink-900 text-[1.05rem] leading-relaxed">
+              "Quick turnaround on my [device] — back in my pocket the same afternoon. Honest
+              pricing and they explained what went wrong."
+            </blockquote>
+            <p class="mt-6 font-mono text-xs uppercase tracking-wider text-ink-600">
+              — Customer · Muswellbrook
+            </p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
-  {/* BUSINESS / B2B HINT */}
-  <section class="section bg-brand-500 text-white">
-    <div class="container-x grid gap-6 lg:grid-cols-[2fr,1fr] lg:items-center">
+  {/* B2B — inverted dark blue, editorial */}
+  <section class="bg-brand-900 text-white">
+    <div class="container-x grid gap-8 py-16 lg:grid-cols-[1.4fr,1fr] lg:items-center lg:py-20">
       <div>
-        <p class="text-sm font-medium uppercase tracking-widest text-white/70">For business</p>
-        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">
+        <p class="eyebrow-on-dark">For business · MSPs · Mining · Councils</p>
+        <h2 class="mt-3 display-2">
           Fleet repairs, onsite IT, and managed devices across the Hunter.
         </h2>
-        <p class="mt-3 max-w-2xl text-white/90">
+        <p class="mt-4 max-w-2xl text-lg text-white/85">
           Subcontract field-service for MSPs and OEM warranty channels. Bulk repairs for mines,
-          councils and schools. Talk to Tim directly.
+          councils and schools. A single point of contact — talk to Tim directly.
         </p>
       </div>
       <div class="flex flex-wrap gap-3 lg:justify-end">
@@ -215,26 +271,50 @@ const schemaNodes = [
     </div>
   </section>
 
-  {/* FAQs */}
+  {/* FAQ — mono-numbered accordion */}
   <section class="section bg-white">
-    <div class="container-x max-w-3xl">
-      <h2 class="section-title">Common questions</h2>
-      <p class="section-sub">Three minutes of reading that saves a phone call.</p>
-      <div class="mt-8 divide-y divide-ink-900/10 rounded-xl border border-ink-900/10 bg-white">
+    <div class="container-x grid gap-12 lg:grid-cols-[1fr,1.5fr] lg:items-start lg:gap-16">
+      <div class="lg:sticky lg:top-24">
+        <Eyebrow>Frequently asked</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">A few minutes that saves a phone call.</h2>
+        <p class="mt-4 text-ink-700">
+          Quick answers to what customers ask most. Still stuck?
+          <a href={site.phone.href} class="font-semibold text-brand-500 hover:underline"> Call us</a>
+          or <a href="/faqs" class="font-semibold text-brand-500 hover:underline">see all FAQs</a>.
+        </p>
+      </div>
+      <div class="divide-y divide-ink-900/10 rounded-md border border-ink-900/10">
         {faqs.map((f, i) => (
-          <details class="group p-5" open={i === 0}>
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-ink-900">
-              <span>{f.question}</span>
-              <span class="text-brand-500 transition group-open:rotate-90"><Icon name="chevron-right" size={18} /></span>
+          <details class="group p-6" open={i === 0}>
+            <summary class="flex cursor-pointer list-none items-baseline gap-4">
+              <span class="font-mono text-xs font-medium uppercase tracking-wider text-brand-500 shrink-0">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="flex-1 text-lg font-bold text-ink-900">{f.question}</span>
+              <span class="text-brand-500 transition group-open:rotate-90 shrink-0"><Icon name="chevron-right" size={18} /></span>
             </summary>
-            <p class="mt-3 leading-relaxed text-ink-600">{f.answer}</p>
+            <p class="mt-4 ml-9 leading-relaxed text-ink-700">{f.answer}</p>
           </details>
         ))}
       </div>
-      <p class="mt-6 text-center text-sm text-ink-600">
-        Still got a question? <a href="/faqs" class="font-semibold text-brand-500 hover:underline">See all FAQs</a> or
-        <a href={site.phone.href} class="font-semibold text-brand-500 hover:underline"> call us</a>.
-      </p>
+    </div>
+  </section>
+
+  {/* CLOSING CTA */}
+  <section class="bg-paper border-t border-ink-900/10">
+    <div class="container-x py-16 text-center">
+      <Eyebrow class="!text-ink-600">Bring it in. We'll fix it.</Eyebrow>
+      <h2 class="mt-3 display-2 text-ink-900">
+        {site.address.street}, {site.address.suburb} · {site.hoursDisplay[0].value}
+      </h2>
+      <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
+        <a href={site.phone.href} class="btn btn-primary">
+          <Icon name="phone" size={18} /> Call {site.phone.display}
+        </a>
+        <a href={site.address.directions} target="_blank" rel="noopener" class="btn btn-outline">
+          <Icon name="directions" size={18} /> Get directions
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -252,13 +332,13 @@ const schemaNodes = [
     const close = 17 * 60;
     const isWeekday = day >= 1 && day <= 5;
     if (isWeekday && minsNow >= open && minsNow < close) {
-      el.textContent = `Open now — closes 5:00pm`;
+      el.textContent = 'Open now — closes 5:00pm';
       el.classList.add('text-emerald-700');
     } else if (isWeekday && minsNow < open) {
-      el.textContent = `Closed — opens 9:30am today`;
+      el.textContent = 'Closed — opens 9:30am today';
       el.classList.add('text-ink-600');
     } else {
-      el.textContent = `Closed — opens 9:30am Monday`;
+      el.textContent = 'Closed — opens 9:30am Monday';
       el.classList.add('text-ink-600');
     }
   })();

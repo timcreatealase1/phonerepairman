@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply bg-white text-ink-900 font-sans antialiased;
+    @apply bg-paper text-ink-900 font-sans antialiased;
     line-height: 1.6;
   }
 
@@ -60,5 +60,22 @@
   }
   .section-sub {
     @apply mx-auto mt-3 max-w-prose text-center text-ink-600;
+  }
+
+  /* Editorial primitives */
+  .eyebrow {
+    @apply font-mono text-[0.7rem] sm:text-xs font-medium uppercase tracking-[0.16em] text-brand-500;
+  }
+  .eyebrow-on-dark {
+    @apply font-mono text-[0.7rem] sm:text-xs font-medium uppercase tracking-[0.16em] text-white/70;
+  }
+  .label-mono {
+    @apply font-mono text-xs font-medium uppercase tracking-wider text-ink-600;
+  }
+  .display-1 {
+    @apply font-extrabold text-display-1;
+  }
+  .display-2 {
+    @apply font-extrabold text-display-2;
   }
 }

@@ -1,0 +1,14 @@
+---
+interface Props {
+  tone?: 'brand' | 'muted' | 'on-dark';
+  class?: string;
+}
+const { tone = 'brand', class: className = '' } = Astro.props;
+const toneClass =
+  tone === 'on-dark' ? 'eyebrow-on-dark' :
+  tone === 'muted'   ? 'label-mono' :
+  'eyebrow';
+---
+<p class={`${toneClass} ${className}`}>
+  <slot />
+</p>

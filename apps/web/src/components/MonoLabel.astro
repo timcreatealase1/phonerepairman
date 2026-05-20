@@ -1,0 +1,16 @@
+---
+// Editorial credential label: rendered as a row of mono caps with a leading
+// horizontal rule, e.g. "── EST. 2014". Used in the hero credentials column,
+// /about, and footer accents.
+interface Props {
+  tone?: 'on-light' | 'on-dark';
+  class?: string;
+}
+const { tone = 'on-light', class: className = '' } = Astro.props;
+const text = tone === 'on-dark' ? 'text-white/80' : 'text-ink-700';
+const rule = tone === 'on-dark' ? 'border-white/30' : 'border-ink-900/30';
+---
+<li class={`flex items-center gap-3 font-mono text-xs uppercase tracking-wider ${text} ${className}`}>
+  <span class={`inline-block h-px w-6 border-t ${rule}`} aria-hidden="true"></span>
+  <slot />
+</li>
