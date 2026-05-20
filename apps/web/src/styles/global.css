@@ -64,13 +64,13 @@
 
   /* Editorial primitives */
   .eyebrow {
-    @apply font-mono text-[0.7rem] sm:text-xs font-medium uppercase tracking-[0.16em] text-brand-500;
+    @apply font-mono text-xs sm:text-sm font-medium uppercase tracking-[0.16em] text-brand-500;
   }
   .eyebrow-on-dark {
-    @apply font-mono text-[0.7rem] sm:text-xs font-medium uppercase tracking-[0.16em] text-white/70;
+    @apply font-mono text-xs sm:text-sm font-medium uppercase tracking-[0.16em] text-white/70;
   }
   .label-mono {
-    @apply font-mono text-xs font-medium uppercase tracking-wider text-ink-600;
+    @apply font-mono text-sm font-medium uppercase tracking-wider text-ink-600;
   }
   .display-1 {
     @apply font-extrabold text-display-1;

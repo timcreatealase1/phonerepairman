@@ -92,11 +92,11 @@ const relatedServices = detail.related
       <ul class="grid gap-px overflow-hidden rounded-md border border-ink-900/10 bg-ink-900/10 sm:grid-cols-2">
         {detail.whatWeFix.map((item, i) => (
           <li class="bg-paper p-6">
-            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-brand-500">
+            <p class="font-mono text-xs uppercase tracking-[0.18em] text-brand-500">
               {String(i + 1).padStart(2, '0')}
             </p>
             <p class="mt-2 text-lg font-bold text-ink-900">{item.title}</p>
-            <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-700">{item.description}</p>
+            <p class="mt-2 text-base leading-relaxed text-ink-700">{item.description}</p>
           </li>
         ))}
       </ul>
@@ -172,7 +172,7 @@ const relatedServices = detail.related
             <Icon name={r.icon as any} size={22} class="text-brand-500" />
             <p class="mt-4 text-lg font-bold text-ink-900">{r.name}</p>
             <p class="mt-2 text-sm leading-relaxed text-ink-700">{r.short}</p>
-            <p class="mt-4 inline-flex items-center gap-1 font-mono text-[0.7rem] uppercase tracking-wider text-brand-500 group-hover:gap-2 transition-all">
+            <p class="mt-4 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-brand-500 group-hover:gap-2 transition-all">
               View service <Icon name="arrow-right" size={12} />
             </p>
           </a>

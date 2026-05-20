@@ -35,7 +35,7 @@ const aspectClass = {
   <figure class={`relative overflow-hidden rounded-md ${aspectClass} ${className}`}>
     <img src={src} alt={alt} loading={loading} class="h-full w-full object-cover" />
     {caption && (
-      <figcaption class="absolute bottom-3 left-3 rounded bg-black/55 px-2 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-white">
+      <figcaption class="absolute bottom-3 left-3 rounded bg-black/55 px-2 py-1 font-mono text-xs uppercase tracking-wider text-white">
         {caption}
       </figcaption>
     )}
@@ -53,11 +53,11 @@ const aspectClass = {
         <circle cx="9" cy="9" r="2"/>
         <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
       </svg>
-      <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-brand-700">
+      <p class="font-mono text-xs uppercase tracking-[0.18em] text-brand-700">
         {caption ?? 'Photo coming soon'}
       </p>
     </div>
-    <span class="absolute bottom-2 right-3 font-mono text-[0.6rem] uppercase tracking-wider text-brand-700/70">
+    <span class="absolute bottom-2 right-3 font-mono text-xs uppercase tracking-wider text-brand-700/70">
       {aspect}
     </span>
   </div>

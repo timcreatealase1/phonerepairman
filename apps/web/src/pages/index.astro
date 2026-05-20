@@ -105,7 +105,7 @@ const schemaNodes = [
         />
         {/* Mono badge floats over the photo's top-right corner — decorative
             credential, becomes more grounded once a real photo is in place. */}
-        <div class="absolute -top-3 right-4 rounded-sm bg-brand-500 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-white shadow">
+        <div class="absolute -top-3 right-4 rounded-sm bg-brand-500 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.18em] text-white shadow">
           OEM Authorised
         </div>
       </div>
@@ -115,7 +115,7 @@ const schemaNodes = [
   {/* PROOF BAR — full-bleed brand blue, mono caps */}
   <section class="bg-brand-500 text-white">
     <div class="container-x py-5">
-      <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.18em]">
+      <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-xs sm:text-sm uppercase tracking-[0.18em]">
         {proofBar.map((label, i) => (
           <>
             {i > 0 && <li aria-hidden="true" class="text-white/40">·</li>}
@@ -169,9 +169,9 @@ const schemaNodes = [
             </div>
             <div>
               <h3 class="text-xl font-bold text-ink-900">{s.name}</h3>
-              <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-700">{s.short}</p>
+              <p class="mt-2 text-base leading-relaxed text-ink-700">{s.short}</p>
             </div>
-            <p class="mt-auto font-mono text-[0.7rem] uppercase tracking-wider text-ink-500">
+            <p class="mt-auto font-mono text-xs uppercase tracking-wider text-ink-500">
               {s.devices.slice(0, 4).join(' · ')}
             </p>
             <span class="absolute right-5 bottom-5 inline-flex h-7 w-7 items-center justify-center rounded-full border border-ink-900/15 text-ink-700 transition group-hover:border-brand-500 group-hover:bg-brand-500 group-hover:text-white">
