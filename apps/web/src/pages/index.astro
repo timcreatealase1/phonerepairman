@@ -4,15 +4,15 @@ import Icon from '~/components/Icon.astro';
 import { site, services } from '~/data/site';
 import { serviceSchema, faqPageSchema } from '~/lib/seo/schema';
 
-const title = `${site.name} — AWA-authorized device repair in Muswellbrook & the Upper Hunter`;
+const title = `${site.name} — Authorised device repair in Muswellbrook & the Upper Hunter`;
 const description =
-  'AWA-authorized HP, Acer and Lexmark repair agent and direct Epson partner in Muswellbrook. Walk-in phone, laptop, tablet and gaming repairs. Est. 2014.';
+  'Authorised Agent for HP, Acer and Lexmark, and direct Epson partner in Muswellbrook. Walk-in phone, laptop, tablet and gaming repairs. Est. 2014.';
 
 // Hero badges — short, scannable trust signals.
 const heroBadges = [
   { icon: 'check' as const,       text: 'Walk-ins welcome' },
   { icon: 'clock' as const,       text: 'Same-day service' },
-  { icon: 'shield-check' as const, text: 'AWA-authorized agent' },
+  { icon: 'shield-check' as const, text: 'OEM Authorised Agents' },
   { icon: 'map-pin' as const,     text: `${site.address.suburb} · Est. ${site.yearFounded}` },
 ];
 
@@ -24,9 +24,9 @@ const faqs = [
       'Walk-ins are welcome any time during opening hours. For laptops, gaming consoles and warranty work it helps to call ahead — that way we know parts are in stock and can usually book you in for a same-day return.',
   },
   {
-    question: 'Are you actually authorized to repair HP, Acer, Lexmark and Epson?',
+    question: 'Are you actually authorised to repair HP, Acer, Lexmark and Epson?',
     answer:
-      'Yes. Phone Repairman is an AWA-authorized service agent for HP, Acer and Lexmark, and a direct service partner with Epson. Warranty work for these brands routes through us via ARA/AWA — same coverage, no parcel shipping out of the Hunter.',
+      'Yes. Phone Repairman is an AWA-authorised service agent for HP, Acer and Lexmark, and a direct service partner with Epson. Warranty work for these brands routes through us via ARA/AWA — same coverage as factory service, no parcel shipping out of the Hunter.',
   },
   {
     question: 'How long does a repair take?',
@@ -71,9 +71,8 @@ const schemaNodes = [
         Authorized device repair, in your town.
       </h1>
       <p class="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-white/90">
-        Phone Repairman is the only <strong class="text-white">AWA-authorized HP, Acer and Lexmark</strong>
-        repair agent — and direct Epson service partner — serving the Upper Hunter from
-        Muswellbrook NSW.
+        Phone Repairman is the local <strong class="text-white">Authorised Agent for HP, Acer and Lexmark</strong>
+        — and a direct Epson service partner — serving the Upper Hunter from Muswellbrook NSW.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-3">
@@ -144,10 +143,10 @@ const schemaNodes = [
   {/* AUTHORIZATIONS STRIP */}
   <section class="section bg-surface-alt">
     <div class="container-x">
-      <h2 class="section-title">Brand-authorized, not just brand-aware.</h2>
+      <h2 class="section-title">Brand-authorised, not just brand-aware.</h2>
       <p class="section-sub">
-        Warranty work for these brands is routed through us via the AWA / ARA partner network —
-        same coverage as factory service, with no parcel shipping out of the Hunter.
+        Warranty and out-of-warranty repairs handled locally in Muswellbrook — same coverage as
+        factory service, with no parcel shipping out of the Hunter.
       </p>
       <ul class="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
         {site.authorizations.map((a) => (

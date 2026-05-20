@@ -68,12 +68,13 @@ export const site = {
     'Upper Hunter',
   ],
 
-  // Brand authorizations — used on /about, brand pages (Phase 2), and JSON-LD.
+  // Brand authorisations — used on /about, brand pages (Phase 2), and JSON-LD.
+  // Keep this plain. The AWA / ARA mechanism is explained only in the FAQ.
   authorizations: [
-    { brand: 'HP', kind: 'AWA-authorized agent' },
-    { brand: 'Acer', kind: 'AWA-authorized agent' },
-    { brand: 'Lexmark', kind: 'AWA-authorized agent' },
-    { brand: 'Epson', kind: 'Direct service partner' },
+    { brand: 'HP', kind: 'Authorised Agent' },
+    { brand: 'Acer', kind: 'Authorised Agent' },
+    { brand: 'Lexmark', kind: 'Authorised Agent' },
+    { brand: 'Epson', kind: 'Direct Service Partner' },
   ],
 
   // Payment methods accepted.
@@ -100,7 +101,7 @@ export const services = [
   {
     slug: 'laptop-repair',
     name: 'Laptop Repair',
-    short: 'Screens, keyboards, batteries, hinges, and motherboards. AWA-authorized for HP and Acer.',
+    short: 'Screens, keyboards, batteries, hinges, and motherboards. Authorised Agents for HP and Acer.',
     icon: 'laptop',
     devices: ['HP', 'Acer', 'Dell', 'Lenovo', 'Apple MacBook', 'Asus'],
   },
@@ -117,13 +118,6 @@ export const services = [
     short: 'PlayStation, Xbox and Nintendo — controllers, HDMI ports, fan replacements, full strip-downs.',
     icon: 'gamepad',
     devices: ['PlayStation', 'Xbox', 'Nintendo Switch'],
-  },
-  {
-    slug: 'data-recovery',
-    name: 'Data Recovery',
-    short: 'Recover photos, files and contacts from broken or unresponsive devices.',
-    icon: 'shield',
-    devices: ['Phones', 'Laptops', 'Hard drives', 'USB / SD'],
   },
   {
     slug: 'onsite-business',
