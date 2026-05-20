@@ -36,9 +36,9 @@ export const site = {
     state: 'NSW',
     postcode: '2333',
     country: 'AU',
-    // Approximate; refine with the real GBP coords when available.
-    lat: -32.2616,
-    lng: 150.8867,
+    // From the Google Maps place listing for Phone Repairman Muswellbrook.
+    lat: -32.2649045,
+    lng: 150.8882651,
     directions: 'https://www.google.com/maps/dir/?api=1&destination=Phone+Repairman+22+Bridge+St+Muswellbrook',
     note: 'Opposite the post office',
   },
