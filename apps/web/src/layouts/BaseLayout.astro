@@ -31,7 +31,7 @@ const {
   description,
   canonical,
   schemaNodes = [],
-  ogImage = '/og-default.png',
+  ogImage = '/og-default.svg',
   noindex = false,
 } = Astro.props;
 
@@ -83,6 +83,7 @@ const graph = graphDocument([
 
     {/* Favicon */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="mask-icon" href="/logo-mark-mono.svg" color="#0057b8" />
 
     {/* JSON-LD */}
     <script type="application/ld+json" set:html={JSON.stringify(graph)} />

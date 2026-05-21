@@ -65,9 +65,9 @@ const segments = [
       </div>
       <div>
         <PhotoSlot
-          alt={`Phone Repairman shop on ${site.address.street}, ${site.address.suburb}`}
+          alt={`Phone Repairman shopfront on ${site.address.street}, ${site.address.suburb}`}
           aspect="4/5"
-          caption="Bridge St · Muswellbrook"
+          tag="07 · Shopfront"
         />
       </div>
     </div>
@@ -133,7 +133,7 @@ const segments = [
       </div>
       <ul class="grid gap-3 sm:grid-cols-2">
         {site.authorizations.map((a) => (
-          <li class="flex items-start gap-4 rounded-md border border-ink-900/10 bg-paper p-5">
+          <li class="flex items-start gap-4 rounded-md border border-line bg-paper p-5">
             <span class="mt-0.5 text-brand-500"><Icon name="shield-check" size={22} /></span>
             <div>
               <p class="text-lg font-bold text-ink-900">{a.brand}</p>
@@ -152,7 +152,7 @@ const segments = [
         <Eyebrow>Who we serve</Eyebrow>
         <h2 class="mt-3 display-2 text-ink-900">Four customers, one phone number.</h2>
       </div>
-      <ul class="grid gap-px overflow-hidden rounded-md border border-ink-900/10 bg-ink-900/10 sm:grid-cols-2">
+      <ul class="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2">
         {segments.map((s, i) => (
           <li class="bg-paper p-7">
             <p class="font-mono text-xs uppercase tracking-[0.18em] text-brand-500">

@@ -16,12 +16,18 @@
 
   body {
     @apply bg-paper text-ink-900 font-sans antialiased;
-    line-height: 1.6;
+    font-feature-settings: 'ss01', 'cv11';
+    line-height: 1.5;
   }
 
   h1, h2, h3, h4 {
     @apply font-bold tracking-tight;
-    line-height: 1.15;
+    text-wrap: balance;
+    line-height: 1.1;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   /* Account for the sticky bottom CTA bar on mobile */
@@ -50,10 +56,10 @@
     @apply border-2 border-brand-500 bg-transparent text-brand-500 hover:bg-brand-50;
   }
   .container-x {
-    @apply mx-auto w-full max-w-container px-5 sm:px-6;
+    @apply mx-auto w-full max-w-container px-6 lg:px-12;
   }
   .section {
-    @apply py-12 sm:py-16;
+    @apply py-16 sm:py-20 lg:py-24;
   }
   .section-title {
     @apply text-2xl sm:text-3xl font-extrabold tracking-tight text-center;
@@ -62,20 +68,28 @@
     @apply mx-auto mt-3 max-w-prose text-center text-ink-600;
   }
 
-  /* Editorial primitives */
+  /* Editorial primitives — match Brand Sheet v1 (Option B) */
   .eyebrow {
-    @apply font-mono text-xs sm:text-sm font-medium uppercase tracking-[0.16em] text-brand-500;
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-ink-600 font-medium;
   }
   .eyebrow-on-dark {
-    @apply font-mono text-xs sm:text-sm font-medium uppercase tracking-[0.16em] text-white/70;
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-white/70 font-medium;
   }
   .label-mono {
     @apply font-mono text-sm font-medium uppercase tracking-wider text-ink-600;
+  }
+  .mono-nav {
+    @apply font-mono text-xs uppercase tracking-[0.14em] text-ink-600 hover:text-ink-900 transition;
   }
   .display-1 {
     @apply font-extrabold text-display-1;
   }
   .display-2 {
     @apply font-extrabold text-display-2;
+  }
+  /* Hairline rule between sections — brand sheet uses these instead of bg colour
+     alternation. Pair with bg-paper on the surrounding container. */
+  .rule {
+    @apply h-px w-full bg-line border-0;
   }
 }

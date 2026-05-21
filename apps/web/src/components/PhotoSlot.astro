@@ -1,13 +1,19 @@
 ---
 // Photo placeholder that swaps to a real <img> when `src` is supplied.
-// Until Tim drops real shop / workbench / technician photos in /public/,
-// this renders a tasteful holding-state with a mono caption so empty
-// states look intentional, not broken.
+// Visual treatment matches the Brand Sheet v1 (Option B): warm grey gradient
+// with a 45deg striped overlay for placeholders, plus a top-right tag pill
+// labelling the slot as Real / Live / Placeholder.
 
 interface Props {
   src?: string;
   alt: string;
   aspect?: '4/5' | '3/4' | '4/3' | '16/9' | '1/1';
+  /** Short slot label e.g. "01 · Interior" (lower-left of frame). */
+  tag?: string;
+  /** Provenance pill (top-right of frame). Defaults: Placeholder when src is
+   *  absent; Real when src is supplied. Override e.g. "Live · Google Business" */
+  source?: 'placeholder' | 'real' | 'live';
+  sourceLabel?: string;
   caption?: string;
   class?: string;
   loading?: 'eager' | 'lazy';
@@ -17,6 +23,9 @@ const {
   src,
   alt,
   aspect = '4/5',
+  tag,
+  source,
+  sourceLabel,
   caption,
   class: className = '',
   loading = 'lazy',
@@ -29,36 +38,61 @@ const aspectClass = {
   '16/9': 'aspect-video',
   '1/1':  'aspect-square',
 }[aspect];
+
+const resolvedSource = source ?? (src ? 'real' : 'placeholder');
+const resolvedSourceLabel =
+  sourceLabel ??
+  (resolvedSource === 'live'        ? 'Live'
+ : resolvedSource === 'real'        ? 'Real'
+ :                                    'Placeholder');
+
+const sourcePillClass = {
+  placeholder: 'bg-paper/95 text-[#a3261a] border border-line-strong',
+  real:        'bg-ink-900/80 text-paper',
+  live:        'bg-brand-500/95 text-paper',
+}[resolvedSource];
 ---
 
-{src ? (
-  <figure class={`relative overflow-hidden rounded-md ${aspectClass} ${className}`}>
-    <img src={src} alt={alt} loading={loading} class="h-full w-full object-cover" />
-    {caption && (
-      <figcaption class="absolute bottom-3 left-3 rounded bg-black/55 px-2 py-1 font-mono text-xs uppercase tracking-wider text-white">
-        {caption}
-      </figcaption>
-    )}
-  </figure>
-) : (
-  <div
-    class={`relative overflow-hidden rounded-md border border-brand-200/60 ${aspectClass} ${className}`}
-    style="background-image: linear-gradient(135deg, #e8f1fc 0%, #ffffff 50%, #d1e2f9 100%);"
-    role="img"
-    aria-label={alt}
-  >
-    <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0057b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-        <circle cx="9" cy="9" r="2"/>
-        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
-      </svg>
-      <p class="font-mono text-xs uppercase tracking-[0.18em] text-brand-700">
-        {caption ?? 'Photo coming soon'}
-      </p>
-    </div>
-    <span class="absolute bottom-2 right-3 font-mono text-xs uppercase tracking-wider text-brand-700/70">
-      {aspect}
+<figure class={`relative overflow-hidden rounded-md border border-line ${aspectClass} ${className}`}>
+  {src && (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      class="absolute inset-0 z-0 h-full w-full object-cover"
+    />
+  )}
+
+  {/* Placeholder visual — soft warm-grey gradient + 45deg stripe overlay.
+      Visible only when no src is present (covered by <img> otherwise). */}
+  {!src && (
+    <>
+      <div
+        class="absolute inset-0 z-0"
+        style="background-image: linear-gradient(135deg, #eceae3 0%, #dad7cd 100%);"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute inset-0 z-[1]"
+        style="background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0 1px, transparent 1px 18px);"
+        aria-hidden="true"
+      ></div>
+    </>
+  )}
+
+  {/* Source pill — top-right */}
+  <span class={`absolute right-3 top-3 z-10 rounded font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.16em] px-2 py-1 ${sourcePillClass}`}>
+    {resolvedSourceLabel}
+  </span>
+
+  {/* Slot tag — bottom-left, only when tag is given */}
+  {tag && (
+    <span class="absolute left-3 bottom-3 z-10 rounded border border-line-strong bg-paper/95 px-2.5 py-1 font-mono text-xs uppercase tracking-[0.14em] text-ink-900">
+      {tag}
     </span>
-  </div>
-)}
+  )}
+
+  {caption && (
+    <figcaption class="sr-only">{alt}{caption ? ` — ${caption}` : ''}</figcaption>
+  )}
+</figure>

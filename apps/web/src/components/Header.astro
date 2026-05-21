@@ -3,17 +3,19 @@ import { site } from '~/data/site';
 import Icon from './Icon.astro';
 ---
 
-<header class="sticky top-0 z-40 border-b border-ink-900/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-  <div class="container-x flex h-16 items-center justify-between">
-    <a href="/" class="flex items-baseline gap-0 text-lg font-extrabold tracking-tight">
-      <span class="text-brand-500">Phone</span><span class="text-ink-900">Repairman</span>
+<header class="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur supports-[backdrop-filter]:bg-paper/75">
+  <div class="container-x flex h-[60px] items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5" aria-label={site.name}>
+      {/* Mark + wordmark — use mark on tiny screens, full lockup elsewhere */}
+      <img src="/logo-mark.svg" alt="" width="28" height="28" class="block sm:hidden" />
+      <img src="/logo-full.svg" alt={site.name} width="160" height="40" class="hidden sm:block h-9 w-auto" />
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm font-medium text-ink-600 md:flex" aria-label="Primary">
-      <a href="/services/" class="hover:text-ink-900">Services</a>
-      <a href="/about" class="hover:text-ink-900">About</a>
-      <a href="/faqs" class="hover:text-ink-900">FAQs</a>
-      <a href="/contact" class="hover:text-ink-900">Contact</a>
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      <a href="/services/" class="mono-nav">Services</a>
+      <a href="/about" class="mono-nav">About</a>
+      <a href="/faqs" class="mono-nav">FAQs</a>
+      <a href="/contact" class="mono-nav">Contact</a>
     </nav>
 
     <a
