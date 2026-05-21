@@ -25,11 +25,13 @@ Used in: Header (full), Footer (white), Safari pinned-tab (mono), invoices, part
 | File path | Format | Dimensions | Status | Notes |
 |---|---|---|---|---|
 | `public/favicon.svg`              | SVG | viewBox 32×32 | ✅ shipped | Stockier strokes — readable at 16px. Linked in BaseLayout. |
-| `public/favicon.ico`              | ICO | 16 + 32 + 48  | TODO | Legacy fallback. Rasterise from `favicon.svg`. |
-| `public/apple-touch-icon.png`     | PNG | 180×180       | TODO | iOS home-screen icon. Rasterise from `logo-mark.svg`. |
-| `public/android-chrome-192.png`   | PNG | 192×192       | TODO | Android shortcut icon. |
-| `public/android-chrome-512.png`   | PNG | 512×512       | TODO | High-DPI Android. |
-| `public/site.webmanifest`         | JSON | —            | TODO | References the PNGs + theme colour. |
+| `public/favicon-16.png`           | PNG | 16×16         | ✅ shipped | Raster fallback. |
+| `public/favicon-32.png`           | PNG | 32×32         | ✅ shipped | Raster fallback. |
+| `public/apple-touch-icon.png`     | PNG | 180×180       | ✅ shipped | iOS home-screen icon. |
+| `public/android-chrome-192.png`   | PNG | 192×192       | ✅ shipped | Android shortcut icon. |
+| `public/android-chrome-512.png`   | PNG | 512×512       | ✅ shipped | High-DPI Android. |
+| `public/site.webmanifest`         | JSON | —            | ✅ shipped | References PNGs + theme + bg colour. |
+| `public/favicon.ico`              | ICO | 16 + 32 + 48  | optional | Modern browsers prefer the SVG; add only if old-browser support matters. |
 
 ## 3. Social / OG share images
 
