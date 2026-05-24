@@ -6,19 +6,25 @@ Drop files into `apps/web/public/` at the paths below — they'll be live on the
 
 ---
 
-## 1. Logo system — Brand Sheet v1, Option B (shipped)
+## 1. Logo system
 
-Service-cross mark + Inter wordmark. Full specs in the Claude Design bundle (`Brand Sheet.html` section 02).
+**Production wordmark (PR Logo 2026):** PNG horizontal lockup — "PHONE" in brand blue `#0b70ff`, "REPAIRMAN" in dark with an integrated wrench glyph. The Tim composite is the founder + wordmark hero asset, used on `/about`.
 
 | File path | Format | Dimensions | Status | Notes |
 |---|---|---|---|---|
-| `public/logo-full.svg`        | SVG | viewBox 240×60 | ✅ shipped | Primary wordmark on paper bg. |
-| `public/logo-full-white.svg`  | SVG | viewBox 240×60 | ✅ shipped | Inverse for dark / brand-blue bg. |
-| `public/logo-mark.svg`        | SVG | viewBox 64×64  | ✅ shipped | Square mark — favicon, social avatar, partner portals. |
-| `public/logo-mark-white.svg`  | SVG | viewBox 64×64  | ✅ shipped | Inverse mark for dark bg. |
-| `public/logo-mark-mono.svg`   | SVG | viewBox 64×64  | ✅ shipped | Outline mark for single-colour print, mask-icon. |
+| `public/wordmark.png`         | PNG | 765×73    | ✅ shipped | Primary lockup on light bg (Header). |
+| `public/wordmark-inverse.png` | PNG | 765×73    | ✅ shipped | Dark-bg variant (Footer). |
+| `public/tim-hero.png`         | PNG | 687×335   | ✅ shipped | Founder + wordmark hero, `/about`. |
 
-Used in: Header (full), Footer (white), Safari pinned-tab (mono), invoices, partner-portal listings.
+**Geometric mark (Brand Sheet v1, Option B):** SVG service-cross — kept for favicon, social avatar, mask-icon. Re-tinted to `#0b70ff` to match the new wordmark.
+
+| File path | Format | Dimensions | Status | Notes |
+|---|---|---|---|---|
+| `public/logo-mark.svg`        | SVG | viewBox 64×64  | ✅ shipped | Square mark for favicon source, social avatar. |
+| `public/logo-mark-white.svg`  | SVG | viewBox 64×64  | ✅ shipped | Inverse mark for dark bg. |
+| `public/logo-mark-mono.svg`   | SVG | viewBox 64×64  | ✅ shipped | Outline mark for single-colour print, Safari mask-icon. |
+| `public/logo-full.svg`        | SVG | viewBox 240×60 | orphan   | Earlier Inter wordmark — superseded by `wordmark.png`. |
+| `public/logo-full-white.svg`  | SVG | viewBox 240×60 | orphan   | Earlier Inter wordmark inverse — superseded by `wordmark-inverse.png`. |
 
 ## 2. Favicon set (derived from `logo-mark.svg`)
 

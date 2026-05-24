@@ -3,7 +3,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumb from '~/components/Breadcrumb.astro';
 import Eyebrow from '~/components/Eyebrow.astro';
 import MonoLabel from '~/components/MonoLabel.astro';
-import PhotoSlot from '~/components/PhotoSlot.astro';
 import Icon from '~/components/Icon.astro';
 import { site } from '~/data/site';
 import { breadcrumbSchema } from '~/lib/seo/schema';
@@ -63,11 +62,14 @@ const segments = [
           <MonoLabel>Walk-in + onsite + B2B</MonoLabel>
         </ul>
       </div>
-      <div>
-        <PhotoSlot
-          alt={`Phone Repairman shopfront on ${site.address.street}, ${site.address.suburb}`}
-          aspect="4/5"
-          tag="07 · Shopfront"
+      <div class="flex items-end justify-center lg:justify-end">
+        <img
+          src="/tim-hero.png"
+          alt={`Tim Ray, owner of ${site.name}, in front of the wordmark`}
+          width="687"
+          height="335"
+          class="h-auto w-full max-w-[520px]"
+          loading="eager"
         />
       </div>
     </div>

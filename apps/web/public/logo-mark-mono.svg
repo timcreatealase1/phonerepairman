@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Phone Repairman">
-  <rect width="64" height="64" rx="14" fill="none" stroke="#0057b8" stroke-width="3"></rect>
-  <g fill="#0057b8">
+  <rect width="64" height="64" rx="14" fill="none" stroke="#0b70ff" stroke-width="3"></rect>
+  <g fill="#0b70ff">
     <rect x="28.5" y="14" width="7" height="36" rx="1.5"></rect>
     <rect x="14" y="28.5" width="36" height="7" rx="1.5"></rect>
   </g>

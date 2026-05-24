@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --brand: #0057b8;
-    --brand-dk: #003d82;
+    --brand: #0b70ff;
+    --brand-dk: #0046a8;
     color-scheme: light;
   }
 

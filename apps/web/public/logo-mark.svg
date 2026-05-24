@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Phone Repairman">
-  <rect width="64" height="64" rx="14" fill="#0057b8"></rect>
+  <rect width="64" height="64" rx="14" fill="#0b70ff"></rect>
   <g fill="#fafaf7">
     <rect x="28.5" y="14" width="7" height="36" rx="1.5"></rect>
     <rect x="14" y="28.5" width="36" height="7" rx="1.5"></rect>
   </g>
-  <circle cx="32" cy="32" r="3.2" fill="#0057b8"></circle>
+  <circle cx="32" cy="32" r="3.2" fill="#0b70ff"></circle>
 </svg>

@@ -2,29 +2,29 @@
   <rect width="1200" height="630" fill="#fafaf7"></rect>
 
   
-  <rect x="1080" y="0" width="120" height="630" fill="#0057b8"></rect>
+  <rect x="1080" y="0" width="120" height="630" fill="#0b70ff"></rect>
 
   
-  <rect x="80" y="80" width="80" height="2" fill="#0057b8"></rect>
+  <rect x="80" y="80" width="80" height="2" fill="#0b70ff"></rect>
 
   
   <text x="80" y="118" font-family="&#39;JetBrains Mono&#39;, &#39;SF Mono&#39;, Consolas, monospace" font-size="20" letter-spacing="2.4" fill="#4b5563">PHONE REPAIRMAN  ·  EST. 2014</text>
 
   
   <g transform="translate(80 188)">
-    <rect width="72" height="72" rx="16" fill="#0057b8"></rect>
+    <rect width="72" height="72" rx="16" fill="#0b70ff"></rect>
     <g fill="#fafaf7">
       <rect x="32" y="14" width="8" height="44" rx="1.8"></rect>
       <rect x="14" y="32" width="44" height="8" rx="1.8"></rect>
     </g>
-    <circle cx="36" cy="36" r="3.6" fill="#0057b8"></circle>
+    <circle cx="36" cy="36" r="3.6" fill="#0b70ff"></circle>
   </g>
-  <text x="172" y="245" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="56" letter-spacing="-1.6" fill="#0057b8">Phone</text>
+  <text x="172" y="245" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="56" letter-spacing="-1.6" fill="#0b70ff">Phone</text>
   <text x="356" y="245" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="56" letter-spacing="-1.6" fill="#111827">Repairman</text>
 
   
   <text x="80" y="382" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="76" letter-spacing="-2.4" fill="#111827">Authorised device repair,</text>
-  <text x="80" y="462" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="76" letter-spacing="-2.4" fill="#0057b8">in your town.</text>
+  <text x="80" y="462" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="76" letter-spacing="-2.4" fill="#0b70ff">in your town.</text>
 
   
   <rect x="80" y="528" width="40" height="2" fill="#111827"></rect>

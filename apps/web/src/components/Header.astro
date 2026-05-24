@@ -4,11 +4,15 @@ import Icon from './Icon.astro';
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur supports-[backdrop-filter]:bg-paper/75">
-  <div class="container-x flex h-[60px] items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5" aria-label={site.name}>
-      {/* Mark + wordmark — use mark on tiny screens, full lockup elsewhere */}
-      <img src="/logo-mark.svg" alt="" width="28" height="28" class="block sm:hidden" />
-      <img src="/logo-full.svg" alt={site.name} width="160" height="40" class="hidden sm:block h-9 w-auto" />
+  <div class="container-x flex h-[60px] items-center justify-between gap-4">
+    <a href="/" class="flex items-center" aria-label={site.name}>
+      <img
+        src="/wordmark.png"
+        alt={site.name}
+        width="765"
+        height="73"
+        class="h-5 w-auto sm:h-6 md:h-7"
+      />
     </a>
 
     <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">

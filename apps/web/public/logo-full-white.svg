@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" role="img" aria-label="Phone Repairman">
   <g transform="translate(8 14)">
     <rect width="32" height="32" rx="7" fill="#fafaf7"></rect>
-    <g fill="#0057b8">
+    <g fill="#0b70ff">
       <rect x="14.25" y="7" width="3.5" height="18" rx="0.75"></rect>
       <rect x="7" y="14.25" width="18" height="3.5" rx="0.75"></rect>
     </g>
