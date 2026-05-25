@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Blackout Midnight — brand display face. Opt-in via `font-blackout` only;
+   never the default for headings. Reserve for occasional split-colour
+   accent moments (wordmark-style "blue word + ink word"). */
+@font-face {
+  font-family: 'Blackout Midnight';
+  src: url('/fonts/blackout-midnight.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --brand: #0b70ff;

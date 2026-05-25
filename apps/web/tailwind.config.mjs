@@ -39,6 +39,8 @@ export default {
       fontFamily: {
         sans: ['Inter', '"Helvetica Neue"', 'Arial', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', '"SF Mono"', 'ui-monospace', 'Consolas', 'monospace'],
+        // Brand display face — opt-in via `font-blackout`. Loaded only when used.
+        blackout: ['"Blackout Midnight"', '"Arial Black"', 'Impact', 'sans-serif'],
       },
       fontSize: {
         'display-1': ['clamp(2.625rem, 5vw, 4rem)',       { lineHeight: '1.05', letterSpacing: '-0.035em' }],

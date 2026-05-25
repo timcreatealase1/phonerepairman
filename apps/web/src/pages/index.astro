@@ -301,12 +301,16 @@ const schemaNodes = [
     </div>
   </section>
 
-  {/* CLOSING CTA */}
+  {/* CLOSING CTA — Blackout Midnight display moment (only spot on the homepage
+      using the brand display face; everywhere else stays Inter 800). */}
   <section class="bg-paper border-t border-line">
     <div class="container-x py-16 text-center">
-      <Eyebrow class="!text-ink-600">Bring it in. We'll fix it.</Eyebrow>
-      <h2 class="mt-3 display-2 text-ink-900">
+      <Eyebrow class="!text-ink-600">
         {site.address.street}, {site.address.suburb} · {site.hoursDisplay[0].value}
+      </Eyebrow>
+      <h2 class="mt-4 font-blackout text-display-1 leading-[0.95] tracking-tight">
+        <span class="text-ink-900">BRING IT IN.</span>{' '}
+        <span class="text-brand-500">WE'LL FIX IT.</span>
       </h2>
       <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
         <a href={site.phone.href} class="btn btn-primary">
