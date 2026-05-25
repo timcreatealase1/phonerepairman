@@ -73,7 +73,7 @@ export const locations: Location[] = [
       {
         question: 'Is it worth the drive from Singleton?',
         answer:
-          'For most repairs, yes — we are the only AWA-authorised service agent for HP, Acer and Lexmark in the area, so warranty work stays local. For high-volume business customers we run onsite calls in Singleton, no drive required.',
+          'For most repairs, yes — we are the local Authorised Agent for HP, Acer and Lexmark in the area, so warranty work stays local. For high-volume business customers we run onsite calls in Singleton, no drive required.',
       },
       {
         question: 'Do you do onsite work for Singleton businesses?',

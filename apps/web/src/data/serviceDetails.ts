@@ -13,11 +13,16 @@ export type ServiceDetail = {
   warranty: string;
   faqs: FaqItem[];
   related: string[];
+  /** Optional hero photo path under /public — falls back to placeholder. */
+  image?: string;
+  imageCaption?: string;
 };
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   'phone-repair': {
     slug: 'phone-repair',
+    image: '/photography/tim-phone-bench.jpg',
+    imageCaption: 'Tim at the phone-repair bench',
     lede:
       'Cracked screen, dead battery, water damage, charging issues — phone repairs for every major brand, mostly same day if the part is in stock.',
     whatWeFix: [
@@ -57,6 +62,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 
   'laptop-repair': {
     slug: 'laptop-repair',
+    image: '/photography/tim-laptop-bench.jpg',
+    imageCaption: 'HP laptop service, Bridge Street workshop',
     lede:
       'Authorised Agent for HP and Acer, plus independent repair for every other major brand. Screens, keyboards, batteries, hinges, motherboards — handled in Muswellbrook.',
     whatWeFix: [
@@ -73,12 +80,12 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     turnaround:
       'Most laptop repairs are 1–3 business days. Warranty work for HP and Acer follows the OEM SLA — we quote that on drop-off.',
     warranty:
-      'AWA warranty repairs carry the manufacturer warranty. Out-of-warranty work is covered by a workmanship warranty quoted at drop-off.',
+      'Authorised warranty repairs carry the original manufacturer warranty. Out-of-warranty work is covered by a workmanship warranty quoted at drop-off.',
     faqs: [
       {
-        question: 'My HP / Acer laptop is still under warranty. Do I deal with you or the manufacturer?',
+        question: 'My HP or Acer laptop is still under warranty. What do I do?',
         answer:
-          "Deal with us. Phone Repairman is the AWA-authorised service agent for HP and Acer in the Upper Hunter — we lodge the warranty claim, order genuine parts, and complete the repair locally so you don't ship the machine interstate.",
+          "Lodge your warranty claim with HP or Acer the way you normally would. Because we are the local Authorised Agent for those brands in the Upper Hunter, the job routes to us — genuine parts, repair completed here in Muswellbrook, no shipping the machine interstate.",
       },
       {
         question: 'My laptop won\'t turn on at all. Worth bringing in?',
@@ -168,7 +175,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       { title: 'Network gear',       description: 'Switch, router and access point installs, replacements and diagnostics.' },
       { title: 'Point of sale',      description: 'POS terminal repairs, receipt printer servicing, peripherals.' },
       { title: 'MSP subcontract',    description: 'Field-service hands for MSPs running customers in the Hunter. White-label or co-branded.' },
-      { title: 'OEM warranty work',  description: 'HP and Acer field-service warranty calls via the AWA partner network.' },
+      { title: 'OEM warranty work',  description: 'HP and Acer field-service warranty calls handled as the local Authorised Agent.' },
     ],
     devices: ['HP workstations', 'Acer laptops', 'Lexmark printers', 'POS terminals', 'Network switches'],
     turnaround:

@@ -73,9 +73,12 @@ const relatedServices = detail.related
       </div>
       <div>
         <PhotoSlot
-          alt={`${service.name} bench at Phone Repairman, Muswellbrook`}
+          src={detail.image}
+          alt={detail.imageCaption ?? `${service.name} bench at Phone Repairman, Muswellbrook`}
           aspect="4/5"
           tag={`${String(services.findIndex((s) => s.slug === slug) + 1).padStart(2, '0')} · ${service.name}`}
+          source={detail.image ? 'real' : 'placeholder'}
+          sourceLabel={detail.image ? 'In-house' : undefined}
           loading="eager"
         />
       </div>

@@ -18,7 +18,7 @@ const brand = brandBySlug(slug!);
 if (!brand) return Astro.redirect('/brands/');
 
 const title = `${brand.name} repair in Muswellbrook — ${site.name}`;
-const description = `${brand.authorisation === 'AWA-authorised' ? 'AWA-authorised' : brand.authorisation === 'Direct service partner' ? 'Direct partner' : 'Independent'} ${brand.name} repair in Muswellbrook. ${brand.short}`.slice(0, 155);
+const description = `${brand.authorisation === 'AWA-authorised' ? 'Authorised Agent for' : brand.authorisation === 'Direct service partner' ? 'Direct service partner for' : 'Independent repairer of'} ${brand.name} in Muswellbrook. ${brand.short}`.slice(0, 155);
 
 const breadcrumbs = [
   { name: 'Home',       href: site.url },
@@ -86,9 +86,12 @@ const authPill = {
       </div>
       <div>
         <PhotoSlot
-          alt={`${brand.name} repair bench at Phone Repairman, Muswellbrook`}
+          src={brand.image}
+          alt={brand.imageCaption ?? `${brand.name} repair bench at Phone Repairman, Muswellbrook`}
           aspect="4/5"
           tag={`${brand.name} · workshop`}
+          source={brand.image ? 'real' : 'placeholder'}
+          sourceLabel={brand.image ? 'In-house' : undefined}
           loading="eager"
         />
       </div>

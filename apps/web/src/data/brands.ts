@@ -27,6 +27,9 @@ export type Brand = {
   relatedServices: string[];
   /** Other brand slugs to feature. */
   relatedBrands: string[];
+  /** Optional hero photo path under /public — falls back to placeholder. */
+  image?: string;
+  imageCaption?: string;
 };
 
 export const brands: Brand[] = [
@@ -37,10 +40,12 @@ export const brands: Brand[] = [
     slug: 'hp',
     name: 'HP',
     authorisation: 'AWA-authorised',
-    short: 'AWA-authorised laptop, printer and workstation repairs.',
+    image: '/photography/tim-laptop-bench.jpg',
+    imageCaption: 'HP EliteBook service',
+    short: 'Authorised Agent for HP — laptops, printers and workstations.',
     icon: 'laptop',
     lede:
-      'AWA-authorised service agent for HP laptops, printers and workstations. Warranty work routes through us locally — same coverage as factory service, no parcel shipping out of the Hunter.',
+      'Authorised Agent for HP laptops, printers and workstations. Warranty repairs are handled locally in Muswellbrook — same coverage as factory service, no parcel shipping out of the Hunter.',
     whatWeFix: [
       { title: 'Screen replacement',     description: 'Cracked panels, dead pixels, backlight faults on every HP series.' },
       { title: 'Keyboard',               description: 'Sticky / broken / failed keyboards on EliteBook, ProBook, Pavilion, Envy and Spectre.' },
@@ -49,21 +54,21 @@ export const brands: Brand[] = [
       { title: 'Thermal service',        description: 'Fan cleaning, paste replacement, fan replacement on machines running hot.' },
       { title: 'Motherboard',            description: 'No-power / no-boot / no-display diagnosis on the board.' },
       { title: 'Printer repair',         description: 'LaserJet and OfficeJet repairs — fusers, paper feed, scanner units, mainboards.' },
-      { title: 'Warranty claim handling', description: 'Lodge with HP via ARA, order genuine parts, complete locally.' },
+      { title: 'Warranty claim handling', description: 'Lodge with HP — your repair is routed to us. Genuine parts, completed locally.' },
     ],
     productLines: [
       'EliteBook', 'ProBook', 'Pavilion', 'Envy', 'Spectre', 'ZBook workstations',
       'LaserJet printers', 'OfficeJet printers', 'HP desktops + all-in-ones',
     ],
     turnaround:
-      'Warranty work follows the HP / ARA service-level agreement — typically 1–3 business days once parts arrive. Out-of-warranty: written turnaround on drop-off.',
+      'Warranty work follows the HP service-level agreement — typically 1–3 business days once parts arrive. Out-of-warranty: written turnaround on drop-off.',
     warranty:
       'Warranty repairs carry the original HP warranty. Out-of-warranty work is covered by a workmanship warranty quoted at drop-off.',
     faqs: [
       {
-        question: 'My HP is still under warranty. Do I deal with HP or with you?',
+        question: 'My HP is still under warranty. What do I do?',
         answer:
-          'Deal with us. We are the AWA-authorised HP service agent for the Upper Hunter — we lodge the warranty claim with HP via the ARA partner network, order genuine parts, and complete the repair locally so the machine stays in the Hunter.',
+          'Lodge your warranty claim with HP the way you normally would (HP support page or phone). Because we are the local Authorised Agent for HP in the Upper Hunter, HP routes the job to us — we order genuine parts and complete the repair locally so the machine stays in the Hunter.',
       },
       {
         question: 'Can you repair HP printers as well as laptops?',
@@ -84,10 +89,10 @@ export const brands: Brand[] = [
     slug: 'acer',
     name: 'Acer',
     authorisation: 'AWA-authorised',
-    short: 'AWA-authorised Aspire, Swift, Predator and Nitro repairs.',
+    short: 'Authorised Agent for Acer — Aspire, Swift, Predator, Nitro.',
     icon: 'laptop',
     lede:
-      'AWA-authorised service agent for Acer laptops and all-in-ones. Warranty service runs through us locally instead of being shipped to a city service centre.',
+      'Authorised Agent for Acer laptops and all-in-ones. Warranty service runs locally instead of being shipped to a city service centre.',
     whatWeFix: [
       { title: 'Screen replacement',  description: 'Cracked or dead panels on Aspire, Swift, Predator, Nitro and TravelMate.' },
       { title: 'Keyboard',            description: 'Backlit and standard keyboard assemblies replaced.' },
@@ -95,14 +100,14 @@ export const brands: Brand[] = [
       { title: 'Hinge repair',        description: 'Acer hinges and lid mounts — common late-life failure.' },
       { title: 'Thermal service',     description: 'Gaming Predator / Nitro thermal repaste — restores fan noise and frame rates.' },
       { title: 'Motherboard',         description: 'No-power and no-boot diagnosis at the board level.' },
-      { title: 'Warranty claim handling', description: 'Lodge via ARA, order parts, complete locally.' },
+      { title: 'Warranty claim handling', description: 'Lodge with Acer — your repair is routed to us. Genuine parts, completed locally.' },
     ],
     productLines: [
       'Aspire', 'Swift', 'Spin', 'Predator', 'Nitro gaming',
       'TravelMate business', 'Chromebook', 'Acer all-in-ones',
     ],
     turnaround:
-      'Warranty work to Acer / ARA SLA — typically 1–3 business days once parts arrive. Out-of-warranty: written turnaround on drop-off.',
+      'Warranty work to Acer SLA — typically 1–3 business days once parts arrive. Out-of-warranty: written turnaround on drop-off.',
     warranty:
       'Warranty repairs carry the original Acer warranty. Out-of-warranty work is covered by a workmanship warranty quoted at drop-off.',
     faqs: [
@@ -112,9 +117,9 @@ export const brands: Brand[] = [
           'Almost certainly — that combination is usually dust build-up in the heatsink plus dried-out thermal paste. We strip down, clean, repaste, and replace fans if needed. Most return to factory thermal performance.',
       },
       {
-        question: 'My Acer is under warranty. Do I send it to Acer or bring it to you?',
+        question: 'My Acer is under warranty. What do I do?',
         answer:
-          'Bring it to us. We are the authorised local Acer service agent — we lodge the warranty claim, source genuine parts and finish the repair here in Muswellbrook.',
+          'Lodge your warranty claim with Acer the way you normally would. Because we are the local Authorised Agent for Acer in the Upper Hunter, Acer routes the job to us — genuine parts, repair completed here in Muswellbrook, no shipping interstate.',
       },
     ],
     relatedServices: ['laptop-repair', 'onsite-business'],
@@ -125,10 +130,10 @@ export const brands: Brand[] = [
     slug: 'lexmark',
     name: 'Lexmark',
     authorisation: 'AWA-authorised',
-    short: 'AWA-authorised business printer service.',
+    short: 'Authorised Agent for Lexmark business printers.',
     icon: 'wrench',
     lede:
-      'AWA-authorised service agent for Lexmark business printers. Warranty and out-of-warranty service handled onsite or in-shop across the Hunter.',
+      'Authorised Agent for Lexmark business printers. Warranty and out-of-warranty service handled onsite or in-shop across the Hunter.',
     whatWeFix: [
       { title: 'Fuser unit',     description: 'Fuser replacement on Lexmark mono and colour laser printers.' },
       { title: 'Paper feed',     description: 'Roller replacements, jam diagnosis, sensor faults.' },
