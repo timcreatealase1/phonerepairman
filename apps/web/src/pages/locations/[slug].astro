@@ -1,0 +1,214 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import MonoLabel from '~/components/MonoLabel.astro';
+import Icon from '~/components/Icon.astro';
+import { site, services } from '~/data/site';
+import { locations, locationBySlug } from '~/data/locations';
+import { breadcrumbSchema, serviceSchema, faqPageSchema } from '~/lib/seo/schema';
+
+export function getStaticPaths() {
+  return locations.map((l) => ({ params: { slug: l.slug } }));
+}
+
+const { slug } = Astro.params;
+const loc = locationBySlug(slug!);
+if (!loc) return Astro.redirect('/locations/');
+
+const title = `Device repair in ${loc.name} — ${site.name}`;
+const description = `${loc.short} Authorised Agent for HP, Acer, Lexmark; direct Epson partner.`.slice(0, 155);
+
+const breadcrumbs = [
+  { name: 'Home',      href: site.url },
+  { name: 'Locations', href: `${site.url}/locations/` },
+  { name: loc.name,    href: `${site.url}/locations/${slug}` },
+];
+
+const schemaNodes = [
+  breadcrumbSchema(breadcrumbs),
+  serviceSchema({
+    name: `Device Repair in ${loc.name}`,
+    description: loc.lede,
+    serviceType: 'Consumer Electronics Repair',
+    url: `${site.url}/locations/${slug}`,
+  }),
+  faqPageSchema(loc.faqs),
+];
+
+const relatedLocs = loc.related
+  .map((s) => locationBySlug(s))
+  .filter((l): l is NonNullable<typeof l> => Boolean(l));
+---
+
+<BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
+  <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Locations', href: '/locations/' }, { name: loc.name }]} />
+
+  {/* HERO */}
+  <section class="bg-paper">
+    <div class="container-x py-12 lg:py-20">
+      <div class="max-w-3xl">
+        <Eyebrow>
+          {loc.kind === 'region' ? 'Regional umbrella' : 'Town we service'}
+          {loc.postcode && ` · ${loc.postcode}`}
+        </Eyebrow>
+        <h1 class="mt-4 font-blackout text-display-1 leading-[0.95] tracking-tight">
+          <span class="text-ink-900">{loc.name.toUpperCase()}.</span>{' '}
+          <span class="text-brand-500">REPAIRED HERE.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-700">{loc.lede}</p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.phone.href} class="btn btn-primary">
+            <Icon name="phone" size={18} /> Call {site.phone.display}
+          </a>
+          <a href={site.sms.href} class="btn btn-outline">
+            <Icon name="message-circle" size={18} /> SMS us
+          </a>
+          {loc.direction !== 'home' && (
+            <a href={site.address.directions} target="_blank" rel="noopener" class="btn btn-outline">
+              <Icon name="directions" size={18} /> Drive in
+            </a>
+          )}
+        </div>
+
+        <ul class="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-x-8">
+          {loc.distanceKm != null && (
+            <MonoLabel>{loc.distanceKm} km {loc.direction} of the shop</MonoLabel>
+          )}
+          {loc.driveTime && (
+            <MonoLabel>{loc.driveTime} drive to Bridge Street</MonoLabel>
+          )}
+          {loc.direction === 'home' && (
+            <MonoLabel>{site.address.street}, {site.address.suburb}</MonoLabel>
+          )}
+          <MonoLabel>Walk-in + onsite</MonoLabel>
+          <MonoLabel>OEM Authorised Agents</MonoLabel>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* CHARACTER */}
+  <section class="section bg-paper border-t border-line">
+    <div class="container-x grid gap-12 lg:grid-cols-[1fr,1.4fr] lg:gap-16">
+      <div>
+        <Eyebrow>About {loc.name}</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">
+          {loc.kind === 'region' ? 'The region we work across.' : `Local character.`}
+        </h2>
+      </div>
+      <p class="text-lg leading-relaxed text-ink-700">{loc.character}</p>
+    </div>
+  </section>
+
+  {/* SERVICES AVAILABLE */}
+  <section class="section bg-white">
+    <div class="container-x">
+      <div class="mb-10 max-w-2xl">
+        <Eyebrow>What we do for {loc.name}</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Same five services, same workshop.</h2>
+        <p class="mt-4 text-ink-700">
+          Every service runs out of the Bridge Street shop in Muswellbrook.
+          {loc.direction !== 'home' && " Drop off when you're next in town, or book us onsite for business work."}
+        </p>
+      </div>
+      <div class="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s, i) => (
+          <a
+            href={`/services/${s.slug}`}
+            class="group flex flex-col gap-4 bg-paper p-6 transition hover:bg-white"
+          >
+            <div class="flex items-start justify-between">
+              <span class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand-500">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <Icon name={s.icon as any} size={22} class="text-brand-500" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-ink-900">{s.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-700">{s.short}</p>
+            </div>
+            <p class="mt-auto font-mono text-xs uppercase tracking-wider text-brand-500 group-hover:underline">
+              For {loc.name} →
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  {loc.faqs.length > 0 && (
+    <section class="section bg-paper">
+      <div class="container-x grid gap-12 lg:grid-cols-[1fr,1.5fr] lg:items-start lg:gap-16">
+        <div class="lg:sticky lg:top-24">
+          <Eyebrow>{loc.name} FAQ</Eyebrow>
+          <h2 class="mt-3 display-2 text-ink-900">A few quick answers.</h2>
+          <p class="mt-4 text-ink-700">
+            Still stuck? <a href={site.phone.href} class="font-semibold text-brand-500 hover:underline">Call us</a>
+            or <a href="/faqs" class="font-semibold text-brand-500 hover:underline">see all FAQs</a>.
+          </p>
+        </div>
+        <div class="divide-y divide-line rounded-md border border-line bg-white">
+          {loc.faqs.map((f, i) => (
+            <details class="group p-6" open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-baseline gap-4">
+                <span class="shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-brand-500">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="flex-1 text-lg font-bold text-ink-900">{f.question}</span>
+                <span class="shrink-0 text-brand-500 transition group-open:rotate-90"><Icon name="chevron-right" size={18} /></span>
+              </summary>
+              <p class="mt-4 ml-9 leading-relaxed text-ink-700">{f.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* NEARBY LOCATIONS */}
+  {relatedLocs.length > 0 && (
+    <section class="section bg-white">
+      <div class="container-x">
+        <Eyebrow>Nearby</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Other towns we cover.</h2>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedLocs.map((l) => (
+            <a
+              href={`/locations/${l.slug}`}
+              class="group rounded-md border border-line bg-paper p-6 transition hover:border-brand-200 hover:bg-white"
+            >
+              <Icon name="map-pin" size={20} class="text-brand-500" />
+              <p class="mt-4 text-lg font-bold text-ink-900">{l.name}</p>
+              <p class="mt-1 text-sm text-ink-700">{l.short}</p>
+              <p class="mt-4 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-brand-500 group-hover:gap-2 transition-all">
+                View location <Icon name="arrow-right" size={12} />
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* CLOSING CTA */}
+  <section class="bg-ink-900 text-white">
+    <div class="container-x py-14 text-center">
+      <p class="eyebrow-on-dark">Bring it in, send it in, or book us onsite</p>
+      <h2 class="mt-3 font-blackout text-display-1 leading-[0.95] tracking-tight">
+        <span class="text-paper">{loc.name.toUpperCase()}.</span>{' '}
+        <span class="text-brand-500">PHONE REPAIRMAN.</span>
+      </h2>
+      <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
+        <a href={site.phone.href} class="btn btn-white">
+          <Icon name="phone" size={18} /> {site.phone.display}
+        </a>
+        <a href={site.sms.href} class="btn btn-outline-white">
+          <Icon name="message-circle" size={18} /> SMS for a quote
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

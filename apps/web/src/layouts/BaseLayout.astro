@@ -76,6 +76,9 @@ const graph = graphDocument([
     {/* Fonts — preconnect + display=swap keeps LCP low */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* Google Business listing photos served from lh3 — preconnect to save
+        DNS+TCP+TLS on the homepage hero image fetch */}
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"

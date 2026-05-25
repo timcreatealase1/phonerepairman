@@ -1,0 +1,236 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import MonoLabel from '~/components/MonoLabel.astro';
+import PhotoSlot from '~/components/PhotoSlot.astro';
+import Icon from '~/components/Icon.astro';
+import { site, services, serviceBySlug } from '~/data/site';
+import { brands, brandBySlug } from '~/data/brands';
+import { breadcrumbSchema, serviceSchema, faqPageSchema } from '~/lib/seo/schema';
+
+export function getStaticPaths() {
+  return brands.map((b) => ({ params: { slug: b.slug } }));
+}
+
+const { slug } = Astro.params;
+const brand = brandBySlug(slug!);
+if (!brand) return Astro.redirect('/brands/');
+
+const title = `${brand.name} repair in Muswellbrook — ${site.name}`;
+const description = `${brand.authorisation === 'AWA-authorised' ? 'AWA-authorised' : brand.authorisation === 'Direct service partner' ? 'Direct partner' : 'Independent'} ${brand.name} repair in Muswellbrook. ${brand.short}`.slice(0, 155);
+
+const breadcrumbs = [
+  { name: 'Home',       href: site.url },
+  { name: 'Brands',     href: `${site.url}/brands/` },
+  { name: brand.name,   href: `${site.url}/brands/${slug}` },
+];
+
+const schemaNodes = [
+  breadcrumbSchema(breadcrumbs),
+  serviceSchema({
+    name: `${brand.name} repair`,
+    description: brand.lede,
+    serviceType: 'Consumer Electronics Repair',
+    url: `${site.url}/brands/${slug}`,
+  }),
+  faqPageSchema(brand.faqs),
+];
+
+const relatedSvc = brand.relatedServices
+  .map((s) => services.find((x) => x.slug === s))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s));
+const relatedBnd = brand.relatedBrands
+  .map((s) => brandBySlug(s))
+  .filter((b): b is NonNullable<typeof b> => Boolean(b));
+
+const authPill = {
+  'AWA-authorised':         { tone: 'bg-brand-500 text-white',                     label: 'Authorised Agent' },
+  'Direct service partner': { tone: 'bg-brand-500 text-white',                     label: 'Direct Service Partner' },
+  'Independent':            { tone: 'bg-paper text-ink-700 border border-line-strong', label: 'Independent Repairer' },
+}[brand.authorisation];
+---
+
+<BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
+  <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Brands', href: '/brands/' }, { name: brand.name }]} />
+
+  {/* HERO */}
+  <section class="bg-paper">
+    <div class="container-x grid items-center gap-12 py-12 lg:grid-cols-[1.15fr,1fr] lg:gap-16 lg:py-20">
+      <div>
+        <div class="flex flex-wrap items-center gap-3">
+          <Eyebrow>Brand</Eyebrow>
+          <span class={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-xs uppercase tracking-[0.16em] ${authPill.tone}`}>
+            <Icon name="shield-check" size={14} /> {authPill.label}
+          </span>
+        </div>
+        <h1 class="mt-4 font-blackout text-display-1 leading-[0.95] tracking-tight">
+          <span class="text-ink-900">{brand.name.toUpperCase()}.</span>{' '}
+          <span class="text-brand-500">REPAIRED HERE.</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-700">{brand.lede}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.phone.href} class="btn btn-primary">
+            <Icon name="phone" size={18} /> Call {site.phone.display}
+          </a>
+          <a href={site.sms.href} class="btn btn-outline">
+            <Icon name="message-circle" size={18} /> SMS for a quote
+          </a>
+        </div>
+        <ul class="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-x-8">
+          <MonoLabel>{authPill.label}</MonoLabel>
+          <MonoLabel>{site.address.street}, {site.address.suburb}</MonoLabel>
+          <MonoLabel>{site.phone.display}</MonoLabel>
+          <MonoLabel>Walk-in + onsite</MonoLabel>
+        </ul>
+      </div>
+      <div>
+        <PhotoSlot
+          alt={`${brand.name} repair bench at Phone Repairman, Muswellbrook`}
+          aspect="4/5"
+          tag={`${brand.name} · workshop`}
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* WHAT WE FIX */}
+  <section class="section bg-paper border-t border-line">
+    <div class="container-x">
+      <div class="mb-10 max-w-2xl">
+        <Eyebrow>What we fix</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">{brand.name}-specific repairs we handle in-house.</h2>
+      </div>
+      <ul class="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2">
+        {brand.whatWeFix.map((item, i) => (
+          <li class="bg-paper p-6">
+            <p class="font-mono text-xs uppercase tracking-[0.18em] text-brand-500">
+              {String(i + 1).padStart(2, '0')}
+            </p>
+            <p class="mt-2 text-lg font-bold text-ink-900">{item.title}</p>
+            <p class="mt-2 text-base leading-relaxed text-ink-700">{item.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* PRODUCT LINES + TURNAROUND + WARRANTY */}
+  <section class="section bg-white">
+    <div class="container-x grid gap-10 lg:grid-cols-3 lg:gap-16">
+      <div>
+        <Eyebrow>Product lines</Eyebrow>
+        <h3 class="mt-3 text-xl font-bold text-ink-900">{brand.name} series we work on.</h3>
+        <ul class="mt-5 flex flex-wrap gap-2">
+          {brand.productLines.map((p) => (
+            <li class="rounded-full border border-line-strong bg-paper px-3 py-1 text-sm font-medium text-ink-900">
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <Eyebrow>Turnaround</Eyebrow>
+        <h3 class="mt-3 text-xl font-bold text-ink-900">Written timing on drop-off.</h3>
+        <p class="mt-3 text-ink-700">{brand.turnaround}</p>
+      </div>
+      <div>
+        <Eyebrow>Warranty</Eyebrow>
+        <h3 class="mt-3 text-xl font-bold text-ink-900">Quoted in writing every time.</h3>
+        <p class="mt-3 text-ink-700">{brand.warranty}</p>
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="section bg-paper">
+    <div class="container-x grid gap-12 lg:grid-cols-[1fr,1.5fr] lg:items-start lg:gap-16">
+      <div class="lg:sticky lg:top-24">
+        <Eyebrow>{brand.name} FAQ</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Common questions.</h2>
+        <p class="mt-4 text-ink-700">
+          Still stuck? <a href={site.phone.href} class="font-semibold text-brand-500 hover:underline">Call us</a>
+          or <a href="/faqs" class="font-semibold text-brand-500 hover:underline">see all FAQs</a>.
+        </p>
+      </div>
+      <div class="divide-y divide-line rounded-md border border-line bg-white">
+        {brand.faqs.map((f, i) => (
+          <details class="group p-6" open={i === 0}>
+            <summary class="flex cursor-pointer list-none items-baseline gap-4">
+              <span class="shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-brand-500">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="flex-1 text-lg font-bold text-ink-900">{f.question}</span>
+              <span class="shrink-0 text-brand-500 transition group-open:rotate-90"><Icon name="chevron-right" size={18} /></span>
+            </summary>
+            <p class="mt-4 ml-9 leading-relaxed text-ink-700">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* RELATED SERVICES + BRANDS */}
+  <section class="section bg-white">
+    <div class="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <Eyebrow>Related services</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Also handled in-house.</h2>
+        <div class="mt-8 space-y-3">
+          {relatedSvc.map((r) => (
+            <a
+              href={`/services/${r.slug}`}
+              class="group flex items-start gap-4 rounded-md border border-line bg-paper p-5 transition hover:border-brand-200 hover:bg-white"
+            >
+              <Icon name={r.icon as any} size={22} class="mt-0.5 text-brand-500" />
+              <div class="flex-1">
+                <p class="text-lg font-bold text-ink-900">{r.name}</p>
+                <p class="mt-1 text-sm text-ink-700">{r.short}</p>
+              </div>
+              <span class="mt-1 text-ink-500 group-hover:text-brand-500"><Icon name="arrow-right" size={16} /></span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div>
+        <Eyebrow>Related brands</Eyebrow>
+        <h2 class="mt-3 display-2 text-ink-900">Other brands we service.</h2>
+        <div class="mt-8 space-y-3">
+          {relatedBnd.map((b) => (
+            <a
+              href={`/brands/${b.slug}`}
+              class="group flex items-start gap-4 rounded-md border border-line bg-paper p-5 transition hover:border-brand-200 hover:bg-white"
+            >
+              <Icon name="shield-check" size={22} class="mt-0.5 text-brand-500" />
+              <div class="flex-1">
+                <p class="text-lg font-bold text-ink-900">{b.name}</p>
+                <p class="mt-1 text-sm text-ink-700">{b.short}</p>
+              </div>
+              <span class="mt-1 text-ink-500 group-hover:text-brand-500"><Icon name="arrow-right" size={16} /></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* CLOSING CTA */}
+  <section class="bg-ink-900 text-white">
+    <div class="container-x py-14 text-center">
+      <p class="eyebrow-on-dark">Bring it in, send it in, or book us onsite</p>
+      <h2 class="mt-3 font-blackout text-display-1 leading-[0.95] tracking-tight">
+        <span class="text-paper">{brand.name.toUpperCase()}.</span>{' '}
+        <span class="text-brand-500">SAME WORKSHOP.</span>
+      </h2>
+      <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
+        <a href={site.phone.href} class="btn btn-white">
+          <Icon name="phone" size={18} /> {site.phone.display}
+        </a>
+        <a href={site.sms.href} class="btn btn-outline-white">
+          <Icon name="message-circle" size={18} /> SMS for a quote
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

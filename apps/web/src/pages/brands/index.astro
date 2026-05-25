@@ -1,0 +1,126 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import Icon from '~/components/Icon.astro';
+import { site } from '~/data/site';
+import { brandsByAuthorisation } from '~/data/brands';
+import { breadcrumbSchema } from '~/lib/seo/schema';
+
+const title = `Brands we service — ${site.name}`;
+const description =
+  'Authorised Agent for HP, Acer and Lexmark; direct Epson partner; independent repairer for Apple, Samsung, Dell and Lenovo. Every major brand handled locally in Muswellbrook.';
+
+const breadcrumbs = [
+  { name: 'Home',   href: site.url },
+  { name: 'Brands', href: `${site.url}/brands/` },
+];
+
+const schemaNodes = [breadcrumbSchema(breadcrumbs)];
+
+const grouped = brandsByAuthorisation().reduce((acc, b) => {
+  (acc[b.authorisation] ||= []).push(b);
+  return acc;
+}, {} as Record<string, ReturnType<typeof brandsByAuthorisation>>);
+
+const groupOrder = ['AWA-authorised', 'Direct service partner', 'Independent'] as const;
+const groupLabels = {
+  'AWA-authorised':        { title: 'AWA-authorised',           sub: 'Warranty work routes through us via the AWA / ARA partner network.' },
+  'Direct service partner':{ title: 'Direct service partner',    sub: 'Direct service agreement with the OEM.' },
+  'Independent':           { title: 'Independent repair',        sub: 'No OEM authorisation — independent service using genuine parts where the supply allows.' },
+} as const;
+---
+
+<BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
+  <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Brands' }]} />
+
+  {/* HERO */}
+  <section class="bg-paper">
+    <div class="container-x py-14 lg:py-20">
+      <div class="max-w-3xl">
+        <Eyebrow>Brands we service</Eyebrow>
+        <h1 class="mt-4 font-blackout text-display-1 leading-[0.95] tracking-tight">
+          <span class="text-ink-900">EVERY MAJOR BRAND.</span>{' '}
+          <span class="text-brand-500">ONE WORKSHOP.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-700">
+          AWA-authorised for HP, Acer and Lexmark. Direct Epson service partner. Independent
+          repairer for Apple, Samsung, Dell, Lenovo and the rest. Same Bridge Street workshop,
+          same hands, every job.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.phone.href} class="btn btn-primary">
+            <Icon name="phone" size={18} /> Call {site.phone.display}
+          </a>
+          <a href={site.sms.href} class="btn btn-outline">
+            <Icon name="message-circle" size={18} /> SMS us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* BRAND GROUPS */}
+  <section class="bg-paper pb-16">
+    <div class="container-x space-y-16">
+      {groupOrder.map((group) => grouped[group] && (
+        <div>
+          <div class="grid gap-4 sm:grid-cols-[280px,1fr] sm:gap-12">
+            <div>
+              <Eyebrow>{groupLabels[group].title}</Eyebrow>
+              <p class="mt-3 font-mono text-xs uppercase tracking-wider text-ink-500">
+                {grouped[group].length} brand{grouped[group].length === 1 ? '' : 's'}
+              </p>
+            </div>
+            <div>
+              <p class="text-lg text-ink-700">{groupLabels[group].sub}</p>
+            </div>
+          </div>
+
+          <ul class="mt-8 divide-y divide-line border-y border-line">
+            {grouped[group].map((b, i) => (
+              <li>
+                <a
+                  href={`/brands/${b.slug}`}
+                  class="group grid items-start gap-6 py-8 transition lg:grid-cols-[auto,1fr,auto] lg:gap-12"
+                >
+                  <span class="font-mono text-sm font-medium uppercase tracking-[0.18em] text-brand-500 lg:w-12">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-ink-900 group-hover:text-brand-700">{b.name}</h2>
+                    <p class="mt-2 max-w-2xl text-ink-700">{b.short}</p>
+                    <p class="mt-3 font-mono text-xs uppercase tracking-wider text-ink-500">
+                      {b.productLines.slice(0, 5).join(' · ')}
+                    </p>
+                  </div>
+                  <span class="hidden lg:inline-flex h-11 w-11 items-center justify-center rounded-full border border-line-strong text-ink-700 transition group-hover:border-brand-500 group-hover:bg-brand-500 group-hover:text-white">
+                    <Icon name="arrow-right" size={18} />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* CLOSING CTA */}
+  <section class="bg-paper border-t border-line">
+    <div class="container-x py-14 text-center">
+      <Eyebrow>Drop in, send it in, or book us onsite</Eyebrow>
+      <h2 class="mt-3 display-2 text-ink-900">
+        {site.address.street}, {site.address.suburb} · {site.hoursDisplay[0].value}
+      </h2>
+      <div class="mt-8 inline-flex flex-wrap justify-center gap-3">
+        <a href={site.phone.href} class="btn btn-primary">
+          <Icon name="phone" size={18} /> Call {site.phone.display}
+        </a>
+        <a href="/contact" class="btn btn-outline">
+          <Icon name="map-pin" size={18} /> Contact &amp; directions
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

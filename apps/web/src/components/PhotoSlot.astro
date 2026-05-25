@@ -39,6 +39,17 @@ const aspectClass = {
   '1/1':  'aspect-square',
 }[aspect];
 
+// Intrinsic dimensions for the <img> tag — Lighthouse expects width/height
+// attributes even when CSS handles layout, so it can reserve space and
+// score CLS = 0. Values match the aspect ratio.
+const aspectDims = {
+  '4/5':  { w: 1000, h: 1250 },
+  '3/4':  { w: 900,  h: 1200 },
+  '4/3':  { w: 1200, h: 900  },
+  '16/9': { w: 1600, h: 900  },
+  '1/1':  { w: 1000, h: 1000 },
+}[aspect];
+
 const resolvedSource = source ?? (src ? 'real' : 'placeholder');
 const resolvedSourceLabel =
   sourceLabel ??
@@ -58,7 +69,10 @@ const sourcePillClass = {
     <img
       src={src}
       alt={alt}
+      width={aspectDims.w}
+      height={aspectDims.h}
       loading={loading}
+      decoding={loading === 'eager' ? 'sync' : 'async'}
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
   )}
