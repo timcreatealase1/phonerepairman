@@ -43,7 +43,10 @@ export default {
         blackout: ['"Blackout Midnight"', '"Arial Black"', 'Impact', 'sans-serif'],
       },
       fontSize: {
-        'display-1': ['clamp(2.625rem, 5vw, 4rem)',       { lineHeight: '1.05', letterSpacing: '-0.035em' }],
+        // display-1 — hero scale. Fluid 44px (mobile) → 104px (xl desktop).
+        // Tracks the "big preview" feel from the font sample, scaled for
+        // real-world hero contexts (not the 144px poster size).
+        'display-1': ['clamp(2.75rem, 9vw, 6.5rem)',      { lineHeight: '1.0',  letterSpacing: '-0.03em'  }],
         'display-2': ['clamp(1.75rem, 3.5vw, 2.25rem)',   { lineHeight: '1.15', letterSpacing: '-0.025em' }],
       },
       maxWidth: {
