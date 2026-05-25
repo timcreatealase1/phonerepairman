@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Phone Repairman — Blackout Midnight font preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" />
+<style>
+  @font-face {
+    font-family: 'Blackout Midnight';
+    src: url('./PR%20Branding%20Font%20-%20Blackout%20Midnight.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --blue: #0b70ff;
+    --blue-deep: #0046a8;
+    --paper: #fafaf7;
+    --ink: #111827;
+    --muted: #4b5563;
+    --line: #e5e3dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.5;
+    padding: 48px 24px 96px;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Display headings using the brand font */
+  .display {
+    font-family: 'Blackout Midnight', 'Arial Black', Impact, sans-serif;
+    color: var(--ink);
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    text-wrap: balance;
+  }
+  .display.blue { color: var(--blue); }
+  .display.inverse { color: var(--paper); }
+
+  /* Inter comparison */
+  .inter {
+    font-family: Inter, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+  }
+
+  /* Section scaffold */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-child { border-bottom: 0; }
+  .h2 { font-family: Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.025em; }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px; }
+  @media (max-width: 720px) { .row { grid-template-columns: 1fr; } }
+  .col h3 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+
+  .swatch { padding: 24px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+  .swatch.dark { background: var(--ink); border-color: transparent; }
+  .swatch.blue-bg { background: var(--blue); border-color: transparent; }
+
+  .stack > * + * { margin-top: 16px; }
+
+  .meta {
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .hero { padding: 24px 0 64px; }
+  .hero .display { font-size: clamp(64px, 12vw, 144px); }
+  .hero .lede { margin-top: 24px; font-family: Inter; font-size: 18px; max-width: 60ch; color: var(--muted); line-height: 1.55; }
+
+  /* Heading scale */
+  .h-160 { font-size: 160px; }
+  .h-128 { font-size: 128px; }
+  .h-96  { font-size: 96px;  }
+  .h-72  { font-size: 72px;  }
+  .h-56  { font-size: 56px;  }
+  .h-42  { font-size: 42px;  }
+  .h-32  { font-size: 32px;  }
+  .h-24  { font-size: 24px;  }
+  .h-16  { font-size: 16px;  }
+
+  /* Wordmark composite */
+  .wordmark-line {
+    display: flex; align-items: baseline; gap: 0.08em;
+    font-family: 'Blackout Midnight', sans-serif;
+    line-height: 0.95;
+  }
+  .wordmark-line .blue { color: var(--blue); }
+  .wordmark-line .ink  { color: var(--ink); }
+
+  /* Side-by-side font comparison */
+  .vs { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 16px; }
+  .vs .card { padding: 24px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+  .vs .card .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .vs .card .sample { line-height: 1.0; }
+  .vs .card.bm .sample { font-family: 'Blackout Midnight', sans-serif; font-size: 64px; }
+  .vs .card.inter .sample { font-family: Inter, sans-serif; font-weight: 800; font-size: 64px; letter-spacing: -0.035em; }
+
+  /* Caveat */
+  .caveat { margin-top: 12px; font-size: 13px; color: var(--muted); max-width: 70ch; }
+  .caveat code { font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 1px 5px; border-radius: 4px; background: var(--line); color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">PHONE REPAIRMAN · BLACKOUT MIDNIGHT · PREVIEW V1</p>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="display">AUTHORISED DEVICE REPAIR.</h1>
+    <p class="lede">
+      This page shows the <strong>Blackout Midnight</strong> typeface (your brand display font) rendered at site-realistic sizes.
+      Body copy and mono labels stay in Inter and JetBrains Mono — Blackout Midnight is reserved for display headlines
+      so it lands hard but doesn't fatigue.
+    </p>
+    <p class="caveat">
+      If the heading above renders in Arial / Impact, your browser blocked the local <code>@font-face</code> load
+      (Chrome on file:// can do this). Open this file in Firefox, or push it to the site, and Blackout Midnight will render.
+    </p>
+  </section>
+
+  <!-- WORDMARK -->
+  <section>
+    <p class="eyebrow">02 · Wordmark composition</p>
+    <h2 class="h2" style="margin-top:8px">Same construction as the PNG logo, rendered in live HTML.</h2>
+    <div class="row">
+      <div class="col">
+        <h3>On paper</h3>
+        <div class="swatch">
+          <div class="wordmark-line h-72"><span class="blue">PHONE</span> <span class="ink">REPAIRMAN</span></div>
+        </div>
+        <p class="meta">72px · paper bg</p>
+      </div>
+      <div class="col">
+        <h3>On dark</h3>
+        <div class="swatch dark">
+          <div class="wordmark-line h-72"><span class="blue">PHONE</span> <span style="color:var(--paper)">REPAIRMAN</span></div>
+        </div>
+        <p class="meta">72px · ink bg</p>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:32px">
+      <div class="col">
+        <h3>Mid scale (~hero h1)</h3>
+        <div class="swatch">
+          <div class="wordmark-line h-96"><span class="blue">PHONE</span> <span class="ink">REPAIRMAN</span></div>
+        </div>
+        <p class="meta">96px</p>
+      </div>
+      <div class="col">
+        <h3>Large scale (signage)</h3>
+        <div class="swatch">
+          <div class="wordmark-line h-128"><span class="blue">PHONE</span> <span class="ink">REPAIRMAN</span></div>
+        </div>
+        <p class="meta">128px</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCALE -->
+  <section>
+    <p class="eyebrow">03 · Display scale</p>
+    <h2 class="h2" style="margin-top:8px">How Blackout Midnight performs at each likely heading size.</h2>
+    <div class="stack" style="margin-top:24px">
+      <div class="swatch">
+        <div class="display h-160" style="line-height:0.9">REPAIRS</div>
+        <p class="meta">160px · oversized hero / signage</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-96">AUTHORISED DEVICE REPAIR.</div>
+        <p class="meta">96px · realistic homepage h1</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-72 blue">WALK IN ANYTIME.</div>
+        <p class="meta">72px · blue accent</p>
+      </div>
+      <div class="swatch dark">
+        <div class="display h-56" style="color:var(--paper)">FLEET REPAIRS · HUNTER WIDE.</div>
+        <p class="meta" style="color:rgba(255,255,255,.6)">56px · ink section heading</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-42">FIVE SERVICES. ONE WORKSHOP.</div>
+        <p class="meta">42px · section title</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-32">BRAND-AUTHORISED, NOT BRAND-AWARE.</div>
+        <p class="meta">32px · subsection</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-24">SAME-DAY ON MOST IN-STOCK REPAIRS.</div>
+        <p class="meta">24px · card heading</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-16">DOES IT WORK AT 16PX BODY-SIZE?</div>
+        <p class="meta">16px · don't use this small for body, just a test</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VS COMPARISON -->
+  <section>
+    <p class="eyebrow">04 · Blackout Midnight vs Inter at the same size</p>
+    <h2 class="h2" style="margin-top:8px">Same words, two faces. Choose your hero.</h2>
+    <div class="vs">
+      <div class="card bm">
+        <p class="label">Blackout Midnight · 64px</p>
+        <div class="sample">AUTHORISED DEVICE REPAIR.</div>
+      </div>
+      <div class="card inter">
+        <p class="label">Inter 800 · 64px</p>
+        <div class="sample">Authorised device repair.</div>
+      </div>
+    </div>
+    <p class="caveat">
+      Blackout Midnight is condensed / display — works at <em>large</em> sizes for poster-like headlines but tightens
+      readability below ~24px. Inter handles the small-size and body work it can't.
+    </p>
+  </section>
+
+  <!-- LOWERCASE & PUNCTUATION TEST -->
+  <section>
+    <p class="eyebrow">05 · Glyph coverage</p>
+    <h2 class="h2" style="margin-top:8px">Numerals, punctuation, lowercase (if the font supports it).</h2>
+    <div class="stack" style="margin-top:24px">
+      <div class="swatch">
+        <div class="display h-56">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ</div>
+        <p class="meta">Uppercase</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-56">abcdefghijklm<br>nopqrstuvwxyz</div>
+        <p class="meta">Lowercase — may render as small caps depending on the font</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-56">0 1 2 3 4 5 6 7 8 9</div>
+        <p class="meta">Numerals</p>
+      </div>
+      <div class="swatch">
+        <div class="display h-56">. , : ; ! ? ' " - / ( ) &amp; @ #</div>
+        <p class="meta">Punctuation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IN-CONTEXT -->
+  <section>
+    <p class="eyebrow">06 · In context — homepage hero mock</p>
+    <h2 class="h2" style="margin-top:8px">If we used Blackout Midnight for the H1.</h2>
+    <div class="swatch" style="margin-top:24px; padding: 48px 32px;">
+      <p class="eyebrow" style="margin-bottom:12px">MUSWELLBROOK · UPPER HUNTER NSW</p>
+      <div class="display h-96" style="line-height:0.95">AUTHORISED<br>DEVICE REPAIR.</div>
+      <p style="margin-top:24px; font-family:Inter; font-size:18px; color:var(--muted); max-width:60ch; line-height:1.55">
+        Phone Repairman is the local Authorised Agent for HP, Acer and Lexmark
+        — and a direct Epson service partner — serving the Upper Hunter from
+        Muswellbrook NSW since 2014.
+      </p>
+      <p class="meta">Hero h1 in Blackout Midnight @ 96px · body Inter @ 18px</p>
+    </div>
+
+    <div class="swatch" style="margin-top:24px; padding: 48px 32px;">
+      <p class="eyebrow" style="margin-bottom:12px">MUSWELLBROOK · UPPER HUNTER NSW</p>
+      <div class="inter" style="font-size:64px; color:var(--ink)">Authorised device repair,<br>in your town.</div>
+      <p style="margin-top:24px; font-family:Inter; font-size:18px; color:var(--muted); max-width:60ch; line-height:1.55">
+        Same body copy, but the headline is Inter 800 (current site).
+      </p>
+      <p class="meta">Current production · Inter 800 @ 64px</p>
+    </div>
+  </section>
+
+  <p class="caveat" style="margin-top:48px">
+    Sample file. Local browser previews load the font from <code>./PR Branding Font - Blackout Midnight.ttf</code>
+    (same folder). If Chrome blocks the local font load, either open in Firefox or push this file to the site and
+    view it there.
+  </p>
+
+</div>
+</body>
+</html>

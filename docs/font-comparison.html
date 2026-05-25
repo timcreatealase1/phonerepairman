@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Phone Repairman — display-font comparison · A vs B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Bebas+Neue&display=swap" />
+<style>
+  @font-face {
+    font-family: 'Blackout Midnight';
+    src: url('./PR%20Branding%20Font%20-%20Blackout%20Midnight.ttf') format('truetype');
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Blackout Midnight Counters';
+    src: url('./blackout-midnight-counters.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  :root {
+    --blue: #0b70ff;
+    --blue-deep: #0046a8;
+    --paper: #fafaf7;
+    --ink: #111827;
+    --muted: #4b5563;
+    --line: #e5e3dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.5;
+    padding: 48px 24px 96px;
+  }
+  .wrap { max-width: 1480px; margin: 0 auto; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1.title {
+    font-family: Inter;
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: -0.025em;
+    margin: 8px 0 12px;
+  }
+  p.lede {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 80ch;
+    line-height: 1.55;
+  }
+  p.lede code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--line);
+    color: var(--ink);
+  }
+
+  /* 3-column comparison grid */
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  @media (max-width: 1100px) { .three { grid-template-columns: 1fr; } }
+  .col-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .col-card.dark { background: var(--ink); border-color: transparent; }
+  .col-head {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .col-card.dark .col-head { border-bottom-color: rgba(255,255,255,.1); color: var(--paper); }
+  .col-head .name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .col-head .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .col-card.dark .col-head .pill { background: var(--ink); border-color: rgba(255,255,255,.1); color: var(--paper); }
+  .col-card .pill.warn { background: #fef3c7; color: #8b6914; border-color: #fcd34d; }
+  .col-card .pill.win { background: #d1fae5; color: #065f46; border-color: #34d399; }
+
+  .col-body { padding: 32px 24px; }
+
+  /* The actual samples */
+  .sample { line-height: 0.95; }
+  .sample.bm     { font-family: 'Blackout Midnight', 'Arial Black', sans-serif; }
+  .sample.bmc    { font-family: 'Blackout Midnight Counters', 'Blackout Midnight', sans-serif; }
+  .sample.bebas  { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; }
+
+  .sample + .sample, .sample + .meta-line, .meta-line + .sample { margin-top: 28px; }
+  .sample.blue { color: var(--blue); }
+  .col-card.dark .sample { color: var(--paper); }
+
+  .meta-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .col-card.dark .meta-line { color: rgba(255,255,255,.55); }
+
+  /* Sizes */
+  .s-96 { font-size: 96px; }
+  .s-72 { font-size: 72px; }
+  .s-56 { font-size: 56px; }
+  .s-40 { font-size: 40px; }
+  .s-28 { font-size: 28px; }
+  .s-20 { font-size: 20px; }
+
+  /* Caveat block */
+  .caveat {
+    margin-top: 56px;
+    padding: 24px 28px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .caveat h3 {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .caveat ul { margin: 8px 0 0 18px; }
+  .caveat li { margin: 4px 0; color: var(--muted); }
+  .caveat strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Phone Repairman · Display-font Comparison</p>
+  <h1 class="title">A (counter-added) vs B (Bebas Neue) — same words, three faces.</h1>
+  <p class="lede">
+    Left: the original <strong>Blackout Midnight</strong> with no counters — what's currently in the
+    wordmark PNG. Middle: <strong>Option A</strong> — derivative TTF generated by running an inward-offset
+    operation on every glyph that should have a counter (A, B, D, O, P, Q, R, 0, 4, 6, 8, a, b, d, e, g, o,
+    p, q). Right: <strong>Option B</strong> — <strong>Bebas Neue</strong>, a similar heavy condensed display
+    face that already ships with proper counters.
+  </p>
+
+  <!-- LARGE — hero-equivalent -->
+  <div class="three">
+    <div class="col-card">
+      <div class="col-head"><span class="name">Original · Blackout Midnight</span><span class="pill">SOLID</span></div>
+      <div class="col-body">
+        <div class="sample bm s-72">PHONE <span class="blue">REPAIRMAN</span></div>
+        <p class="meta-line">72px · wordmark line</p>
+        <div class="sample bm s-56">AUTHORISED DEVICE REPAIR.</div>
+        <p class="meta-line">56px · hero h1</p>
+        <div class="sample bm s-40 blue">WALK IN ANYTIME.</div>
+        <p class="meta-line">40px · blue accent</p>
+        <div class="sample bm s-28">BRAND-AUTHORISED, NOT BRAND-AWARE.</div>
+        <p class="meta-line">28px · section title</p>
+        <div class="sample bm s-20">SAME-DAY ON MOST IN-STOCK REPAIRS.</div>
+        <p class="meta-line">20px · card heading</p>
+      </div>
+    </div>
+
+    <div class="col-card">
+      <div class="col-head"><span class="name">Option A · Blackout Midnight Counters</span><span class="pill warn">EXPERIMENT</span></div>
+      <div class="col-body">
+        <div class="sample bmc s-72">PHONE <span class="blue">REPAIRMAN</span></div>
+        <p class="meta-line">72px · wordmark line</p>
+        <div class="sample bmc s-56">AUTHORISED DEVICE REPAIR.</div>
+        <p class="meta-line">56px · hero h1</p>
+        <div class="sample bmc s-40 blue">WALK IN ANYTIME.</div>
+        <p class="meta-line">40px · blue accent</p>
+        <div class="sample bmc s-28">BRAND-AUTHORISED, NOT BRAND-AWARE.</div>
+        <p class="meta-line">28px · section title</p>
+        <div class="sample bmc s-20">SAME-DAY ON MOST IN-STOCK REPAIRS.</div>
+        <p class="meta-line">20px · card heading</p>
+      </div>
+    </div>
+
+    <div class="col-card">
+      <div class="col-head"><span class="name">Option B · Bebas Neue</span><span class="pill win">RECOMMENDED</span></div>
+      <div class="col-body">
+        <div class="sample bebas s-72">PHONE <span class="blue">REPAIRMAN</span></div>
+        <p class="meta-line">72px · wordmark line</p>
+        <div class="sample bebas s-56">AUTHORISED DEVICE REPAIR.</div>
+        <p class="meta-line">56px · hero h1</p>
+        <div class="sample bebas s-40 blue">WALK IN ANYTIME.</div>
+        <p class="meta-line">40px · blue accent</p>
+        <div class="sample bebas s-28">BRAND-AUTHORISED, NOT BRAND-AWARE.</div>
+        <p class="meta-line">28px · section title</p>
+        <div class="sample bebas s-20">SAME-DAY ON MOST IN-STOCK REPAIRS.</div>
+        <p class="meta-line">20px · card heading</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLYPH STRESS TEST -->
+  <h2 class="title" style="margin-top:56px; font-size:24px">Glyph stress test — the letters where counters matter most</h2>
+  <p class="lede">A / B / D / O / P / Q / R / 0 / 4 / 6 / 8 — these are the letters where the inset operation has to do real work.</p>
+  <div class="three">
+    <div class="col-card">
+      <div class="col-head"><span class="name">Original</span></div>
+      <div class="col-body">
+        <div class="sample bm s-96">ABDO</div>
+        <div class="sample bm s-96">PQR0</div>
+        <div class="sample bm s-96">4 6 8</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-head"><span class="name">Option A · Counters</span></div>
+      <div class="col-body">
+        <div class="sample bmc s-96">ABDO</div>
+        <div class="sample bmc s-96">PQR0</div>
+        <div class="sample bmc s-96">4 6 8</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-head"><span class="name">Option B · Bebas Neue</span></div>
+      <div class="col-body">
+        <div class="sample bebas s-96">ABDO</div>
+        <div class="sample bebas s-96">PQR0</div>
+        <div class="sample bebas s-96">4 6 8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK CONTEXT -->
+  <h2 class="title" style="margin-top:56px; font-size:24px">On dark (B2B section / footer / closing CTA)</h2>
+  <div class="three">
+    <div class="col-card dark">
+      <div class="col-head"><span class="name">Original</span></div>
+      <div class="col-body">
+        <div class="sample bm s-56">FLEET REPAIRS — HUNTER WIDE.</div>
+        <p class="meta-line">56px · inverted heading</p>
+      </div>
+    </div>
+    <div class="col-card dark">
+      <div class="col-head"><span class="name">Option A · Counters</span></div>
+      <div class="col-body">
+        <div class="sample bmc s-56">FLEET REPAIRS — HUNTER WIDE.</div>
+        <p class="meta-line">56px · inverted heading</p>
+      </div>
+    </div>
+    <div class="col-card dark">
+      <div class="col-head"><span class="name">Option B · Bebas Neue</span></div>
+      <div class="col-body">
+        <div class="sample bebas s-56">FLEET REPAIRS — HUNTER WIDE.</div>
+        <p class="meta-line">56px · inverted heading</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOMEPAGE HERO MOCKS -->
+  <h2 class="title" style="margin-top:56px; font-size:24px">Homepage hero mock — each font as the H1</h2>
+  <div class="three">
+    <div class="col-card">
+      <div class="col-head"><span class="name">Original Blackout</span></div>
+      <div class="col-body">
+        <p class="meta-line" style="margin-bottom:12px">MUSWELLBROOK · UPPER HUNTER NSW</p>
+        <div class="sample bm s-56" style="line-height:0.95">AUTHORISED<br>DEVICE REPAIR.</div>
+        <p style="margin-top:18px; font-family:Inter; font-size:15px; color:var(--muted); line-height:1.55">
+          Body copy stays in Inter — Phone Repairman is the local Authorised Agent for HP, Acer and Lexmark.
+        </p>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-head"><span class="name">Option A · Counters</span></div>
+      <div class="col-body">
+        <p class="meta-line" style="margin-bottom:12px">MUSWELLBROOK · UPPER HUNTER NSW</p>
+        <div class="sample bmc s-56" style="line-height:0.95">AUTHORISED<br>DEVICE REPAIR.</div>
+        <p style="margin-top:18px; font-family:Inter; font-size:15px; color:var(--muted); line-height:1.55">
+          Body copy stays in Inter — Phone Repairman is the local Authorised Agent for HP, Acer and Lexmark.
+        </p>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-head"><span class="name">Option B · Bebas Neue</span></div>
+      <div class="col-body">
+        <p class="meta-line" style="margin-bottom:12px">MUSWELLBROOK · UPPER HUNTER NSW</p>
+        <div class="sample bebas s-56" style="line-height:0.95">AUTHORISED<br>DEVICE REPAIR.</div>
+        <p style="margin-top:18px; font-family:Inter; font-size:15px; color:var(--muted); line-height:1.55">
+          Body copy stays in Inter — Phone Repairman is the local Authorised Agent for HP, Acer and Lexmark.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAVEAT -->
+  <div class="caveat">
+    <h3>How Option A was generated</h3>
+    <p>
+      Loaded <code>PR Branding Font - Blackout Midnight.ttf</code> with <strong>opentype.js</strong>, flattened
+      every Bezier curve to a 32-segment polygon, ran <strong>clipper-lib</strong> with a -55 em-unit inward
+      offset on the outer contour of every glyph in the set
+      <code>A B D O P Q R 0 4 6 8 a b d e g o p q</code>, reversed the resulting polygon's winding direction,
+      and appended it as an inner ring so TrueType's non-zero fill rule cuts it as a hole. 19 glyphs modified.
+    </p>
+    <ul>
+      <li><strong>Will look good:</strong> O · P · D · B · 0 · 8 · b · d · o · p · q — simple bowls.</li>
+      <li><strong>Will look passable:</strong> A · Q — single counter with predictable shape.</li>
+      <li><strong>Will look amateurish:</strong> R · 4 · 6 · a · e · g — counters are part of the letterform aesthetic, not just "shrink-outline-inward".</li>
+    </ul>
+    <p style="margin-top:12px">
+      Output is a free derivative — Blackout Midnight is licensed for personal/commercial use; this is a
+      transformation of a font you legally own. Filename: <code>blackout-midnight-counters.ttf</code>.
+    </p>
+    <h3 style="margin-top:20px">Option B note</h3>
+    <p>
+      Bebas Neue is on Google Fonts (free, open-source). It's a heavy condensed all-caps display face by
+      Ryoichi Tsunekawa — the closest type-design relative to Blackout Midnight that ships with proper
+      counters. If picked, the wordmark PNG stays in Blackout Midnight (your identity asset); only the live
+      site headings switch to Bebas Neue. Loads via a Google Fonts <code>&lt;link&gt;</code> — zero file
+      hosting on your side.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
