@@ -1,0 +1,45 @@
+# Cloudflare Pages headers — applied to every response.
+# Reference: https://developers.cloudflare.com/pages/configuration/headers/
+
+# Hashed Astro build assets — safe to cache forever
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Self-hosted font — versioned via filename, safe to cache forever
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# SVG identity assets
+/favicon.svg
+  Cache-Control: public, max-age=604800
+/logo-mark*.svg
+  Cache-Control: public, max-age=604800
+/logo-full*.svg
+  Cache-Control: public, max-age=604800
+/og-default.svg
+  Cache-Control: public, max-age=604800
+
+# Wordmark + Tim composite + photography — long cache, not immutable
+# (we may swap these as real photographer shots land)
+/wordmark*.png
+  Cache-Control: public, max-age=2592000
+/tim-hero.png
+  Cache-Control: public, max-age=2592000
+/photography/*
+  Cache-Control: public, max-age=2592000
+
+# Favicon raster fallbacks
+/favicon-*.png
+  Cache-Control: public, max-age=2592000
+/apple-touch-icon.png
+  Cache-Control: public, max-age=2592000
+/android-chrome-*.png
+  Cache-Control: public, max-age=2592000
+
+# Security headers — global
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: SAMEORIGIN

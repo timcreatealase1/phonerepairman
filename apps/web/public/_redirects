@@ -1,0 +1,36 @@
+# Cloudflare Pages redirects — applied before pages are served.
+# Reference: https://developers.cloudflare.com/pages/configuration/redirects/
+# Format: <from> <to> <status>
+
+# Legacy paths from the old static site (the old phonerepairman.com.au only
+# served /, so there's nothing to 301 from there). Defensive redirects below
+# cover common typos and likely-stale links in external listings.
+
+# Trade-name consolidation — anyone landing on legacy phrasing
+/iphone-repair        /services/phone-repair       301
+/iphone-repairs       /services/phone-repair       301
+/phone-repair         /services/phone-repair       301
+/laptop-repair        /services/laptop-repair      301
+/tablet-repair        /services/tablet-repair      301
+/console-repair       /services/console-repair     301
+/onsite               /services/onsite-business    301
+/onsite-it            /services/onsite-business    301
+
+# Common contact / about typos
+/contact-us           /contact                     301
+/about-us             /about                       301
+/faq                  /faqs                        301
+
+# Brand pages — defensive
+/brand/*              /brands/:splat               301
+
+# Locations — defensive
+/location/*           /locations/:splat            301
+/muswellbrook         /locations/muswellbrook      301
+/singleton            /locations/singleton         301
+/scone                /locations/scone             301
+/aberdeen             /locations/aberdeen          301
+/denman               /locations/denman            301
+/merriwa              /locations/merriwa           301
+/murrurundi           /locations/murrurundi        301
+/hunter-valley        /locations/hunter-valley     301
