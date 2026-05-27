@@ -89,6 +89,8 @@ export const brands: Brand[] = [
     slug: 'acer',
     name: 'Acer',
     authorisation: 'AWA-authorised',
+    image: '/photography/tim-acer-bench.jpg',
+    imageCaption: 'Acer laptop service, Bridge Street workshop',
     short: 'Authorised Agent for Acer — Aspire, Swift, Predator, Nitro.',
     icon: 'laptop',
     lede:
