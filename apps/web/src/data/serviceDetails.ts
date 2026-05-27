@@ -137,6 +137,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 
   'onsite-business': {
     slug: 'onsite-business',
+    // PLACEHOLDER REUSE — laptop-bench (HP EliteBook is a business machine) used
+    // as a stand-in. Want: a real "Tim onsite at a customer business" shot
+    // (kit bag, lanyard, customer's reception in background). Priority A.
+    image: '/photography/tim-laptop-bench.jpg',
+    imageCaption: 'Business laptop service · onsite photo coming',
     lede:
       'Field-service technician for MSPs, mining IT and small business — across the Upper Hunter. One number for the whole stack.',
     whatWeFix: [

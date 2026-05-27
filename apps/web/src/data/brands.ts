@@ -132,6 +132,10 @@ export const brands: Brand[] = [
     slug: 'lexmark',
     name: 'Lexmark',
     authorisation: 'AWA-authorised',
+    // PLACEHOLDER REUSE — using the Acer-bench shot for now. Want: a real
+    // Lexmark MFP printer being serviced (toner/fuser/scanner work). Priority A.
+    image: '/photography/tim-acer-bench.jpg',
+    imageCaption: 'Bridge Street workshop · Lexmark photo coming',
     short: 'Authorised Agent for Lexmark business printers.',
     icon: 'wrench',
     lede:
@@ -174,6 +178,10 @@ export const brands: Brand[] = [
     slug: 'epson',
     name: 'Epson',
     authorisation: 'Direct service partner',
+    // PLACEHOLDER REUSE — using the laptop-bench shot for now. Want: a real
+    // Epson EcoTank / WorkForce printer being serviced. Priority A.
+    image: '/photography/tim-laptop-bench.jpg',
+    imageCaption: 'Bridge Street workshop · Epson photo coming',
     short: 'Direct Epson service partner — printers, scanners, projectors.',
     icon: 'wrench',
     lede:
@@ -217,6 +225,10 @@ export const brands: Brand[] = [
     slug: 'apple',
     name: 'Apple',
     authorisation: 'Independent',
+    // GOOD FIT — iPad is an Apple device, same shot used on /services/tablet-repair.
+    // Future: ideally a separate MacBook or iPhone-specific shot to vary the visual.
+    image: '/photography/tim-ipad-bench.jpg',
+    imageCaption: 'iPad service — same workshop, Bridge Street',
     short: 'iPhone, iPad, MacBook and Apple Watch repairs.',
     icon: 'smartphone',
     lede:
@@ -266,6 +278,11 @@ export const brands: Brand[] = [
     slug: 'samsung',
     name: 'Samsung',
     authorisation: 'Independent',
+    // PLACEHOLDER REUSE — phone-bench shot used as a generic phone-repair scene.
+    // Want: a Galaxy S / Z Fold-specific shot. Priority B (Samsung is a high-
+    // search brand for phone repairs).
+    image: '/photography/tim-phone-bench.jpg',
+    imageCaption: 'Phone repair bench · Bridge Street',
     short: 'Galaxy phone, tablet and smartwatch repairs.',
     icon: 'smartphone',
     lede:
@@ -306,6 +323,10 @@ export const brands: Brand[] = [
     slug: 'dell',
     name: 'Dell',
     authorisation: 'Independent',
+    // PLACEHOLDER REUSE — laptop-bench (HP shot) used as generic laptop service
+    // scene. Want: a Dell Latitude / XPS specific shot. Priority B.
+    image: '/photography/tim-laptop-bench.jpg',
+    imageCaption: 'Laptop service bench · Bridge Street',
     short: 'Latitude, Inspiron, XPS and Precision laptop repairs.',
     icon: 'laptop',
     lede:
@@ -342,6 +363,11 @@ export const brands: Brand[] = [
     slug: 'lenovo',
     name: 'Lenovo',
     authorisation: 'Independent',
+    // PLACEHOLDER REUSE — acer-bench shot used as a different laptop-repair angle.
+    // Want: a ThinkPad-specific shot (red TrackPoint visible would be ideal).
+    // Priority B.
+    image: '/photography/tim-acer-bench.jpg',
+    imageCaption: 'Laptop service bench · Bridge Street',
     short: 'ThinkPad, IdeaPad, Yoga and Legion repairs.',
     icon: 'laptop',
     lede:

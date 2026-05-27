@@ -108,3 +108,38 @@ All portraits **4:5 aspect, vertical**. Exterior is also 4:5 vertical. Group sho
 - **Tim Ray** — owner, +61 2 6543 1289
 - Shop: 22 Bridge St, Muswellbrook NSW 2333 (opposite the post office)
 - Best shoot times: **shop hours (Mon–Fri 9:30am–5:00pm)** for interior/onsite. **Late afternoon** for the shopfront exterior.
+
+---
+
+## Current site usage — what's canonical vs placeholder reuse
+
+The site is live with what we have. Pages that **reuse** an existing photo as a stand-in are flagged so we can prioritise replacements.
+
+| Page | Photo in use | Status |
+|---|---|---|
+| `/services/phone-repair` | `tim-phone-bench.jpg` | ✅ canonical |
+| `/services/laptop-repair` | `tim-laptop-bench.jpg` | ✅ canonical (HP EliteBook on bench) |
+| `/services/tablet-repair` | `tim-ipad-bench.jpg` | ✅ canonical (iPad on bench) |
+| `/services/onsite-business` | `tim-laptop-bench.jpg` (reuse) | **Priority A** — want a real "Tim onsite at customer business" shot (kit bag, lanyard, customer reception bg) |
+| `/brands/hp` | `tim-laptop-bench.jpg` | ✅ canonical (HP EliteBook visible) |
+| `/brands/acer` | `tim-acer-bench.jpg` | ✅ canonical (Acer visible) |
+| `/brands/apple` | `tim-ipad-bench.jpg` | ✅ acceptable (iPad is Apple) — future: separate iPhone / MacBook shot to vary |
+| `/brands/samsung` | `tim-phone-bench.jpg` (reuse) | **Priority B** — want a Galaxy-specific shot |
+| `/brands/dell` | `tim-laptop-bench.jpg` (reuse) | **Priority B** — want a Dell Latitude / XPS shot |
+| `/brands/lenovo` | `tim-acer-bench.jpg` (reuse) | **Priority B** — want a ThinkPad shot (red TrackPoint visible would be ideal) |
+| `/brands/lexmark` | `tim-acer-bench.jpg` (reuse) | **Priority A** — want a Lexmark MFP printer being serviced (toner / fuser / scanner work) |
+| `/brands/epson` | `tim-laptop-bench.jpg` (reuse) | **Priority A** — want an Epson EcoTank / WorkForce printer being serviced |
+
+### Priority order for the next shoot
+
+1. **Onsite at a customer business** — covers `/services/onsite-business`, key B2B page
+2. **Lexmark printer being serviced** — `/brands/lexmark`, only photo that doesn't make sense as a laptop / phone reuse
+3. **Epson printer being serviced** — `/brands/epson`, same problem as Lexmark
+4. **Galaxy phone-specific shot** — `/brands/samsung`, high-search brand
+5. **Dell laptop shot** — `/brands/dell`
+6. **ThinkPad shot** — `/brands/lenovo`
+7. **iPhone or MacBook close-up** — to give `/brands/apple` its own canonical photo (iPad shot also works)
+8. **Shopfront exterior at golden hour** — for `/about` hero replacement (currently shows the founder composite)
+9. **Service-counter wide** — Tim + Honey at the counter
+
+All shots: 4:5 vertical, same workshop setting + branded polo as the existing four AI portraits to keep visual consistency.
