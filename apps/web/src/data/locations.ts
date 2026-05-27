@@ -50,7 +50,7 @@ export const locations: Location[] = [
       {
         question: 'Do I need to book?',
         answer:
-          'Walk-ins are welcome. Calling ahead helps for laptop / gaming-console / warranty work so we know parts are in stock and can book you in for a same-day return.',
+          'Walk-ins are welcome. Calling ahead helps for laptop, printer and warranty work so we know parts are in stock and can book you in for a same-day return.',
       },
     ],
     related: ['aberdeen', 'scone', 'singleton'],

@@ -52,7 +52,7 @@
 | RocketReach | low-priority | https://rocketreach.co/iphone-repairman-profile_b43cd961c1ccc7f7 | iPhone Repairman | — | — | — | B2B data broker |
 | Adapt.io | low-priority | https://www.adapt.io/company/iphonerepairman | iPhone Repairman | — | — | — | B2B data broker |
 | YouTube channel | low-priority (cosmetic) | https://www.youtube.com/watch?v=S5qqoVHGEzo | iPhone Repairman | — | — | — | Channel/video title uses legacy name |
-| **Google Business Profile** | unverified — blocked | (not surfaced publicly) | — | — | — | — | Must check from inside Google Business console. High priority — drives Maps + local pack |
+| **Google Business Profile** | ✅ canonical (verified 2026-05-27) | https://www.google.com/maps/place/Phone+Repairman+-+Device+Repair+Center+in+Muswellbrook | Phone Repairman — Device Repair Center in Muswellbrook | (02) 6543 1289 | 22 Bridge Street, Muswellbrook NSW 2333 | Mon–Fri 9:30am–5:00pm | Verified by Tim from inside the Google Business console. Service area covers Scone, Denman, Merriwa, Aberdeen, Singleton, Murrurundi, Muswellbrook. Identifies as women-owned. Accepts debit + credit + NFC. Has electronics + battery recycling. |
 | Apple Maps / Apple Business Connect | unverified | — | — | — | — | — | Check from inside ABC console |
 | Bing Places | unverified | — | — | — | — | — | Check from inside Bing Places console |
 | Hotfrog AU | not-listed | — | — | — | — | — | No entry found — opportunity to create canonical listing |
@@ -60,7 +60,7 @@
 
 ## Priority order for fixes
 
-1. **Google Business Profile** — drives Maps + local pack. Sign in to Google Business and verify name, phone, address, hours, categories, photos.
+1. ~~**Google Business Profile**~~ — ✅ **done 2026-05-27.** Verified canonical. Service area + attributes all in place.
 2. **Facebook Page** — rename "iPhone Repairman" to "Phone Repairman", change vanity URL from `phonescreenrepairman` if possible.
 3. **Yellow Pages** — every NAP field is stale (legacy name, phone, address, domain, email). Highest visibility legacy directory in AU.
 4. **dlook** — three duplicate records, all stale. Request merge + update.
@@ -79,3 +79,15 @@
 ## Methodology gap (acknowledge)
 
 The "needs-update" rows are based on WebSearch result snippets, not page renders. To finalise each row, open the URL manually and confirm the exact on-page values (some snippets don't surface the phone field — listed as `—`). The high-confidence updates are the ones where the legacy name "iPhone Repairman" or legacy phone "(02) 4058 1904" or legacy address "1B Finnegan Cres" appear in the snippet itself.
+
+## Year-founded inconsistency (flagged 2026-05-27)
+
+Three different years appear across our own assets — pick one and reconcile everywhere:
+
+| Source | Says |
+|---|---|
+| Website (`apps/web/src/data/site.ts` + every page) | **Est. 2014** |
+| GBP "Opening date" field | **July 2012** |
+| GBP description text | **"Trusted in Muswellbrook since 2010"** |
+
+Most likely 2014 is when Phone Repairman (current trading name) started, and 2010 / 2012 relate to the earlier iPhone Repairman business / shopfront. Pick one canonical year and update the site + GBP description so they match. Internal note for Tim.

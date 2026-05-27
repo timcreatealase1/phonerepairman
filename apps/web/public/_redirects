@@ -12,7 +12,7 @@
 /phone-repair         /services/phone-repair       301
 /laptop-repair        /services/laptop-repair      301
 /tablet-repair        /services/tablet-repair      301
-/console-repair       /services/console-repair     301
+/console-repair       /services/                   301
 /onsite               /services/onsite-business    301
 /onsite-it            /services/onsite-business    301
 

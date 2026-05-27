@@ -57,7 +57,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
           "Power it off, do not plug it in to charge, and bring it in as soon as you can. Sooner = better chance of full recovery. Rice doesn't work — corrosion happens at the contact level, not the moisture level.",
       },
     ],
-    related: ['tablet-repair', 'laptop-repair', 'console-repair'],
+    related: ['tablet-repair', 'laptop-repair', 'onsite-business'],
   },
 
   'laptop-repair': {
@@ -130,39 +130,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
           "We test both. Bring the cable and charger if you can — saves us guessing and saves you money if the answer is just a $20 cable.",
       },
     ],
-    related: ['phone-repair', 'laptop-repair', 'console-repair'],
-  },
-
-  'console-repair': {
-    slug: 'console-repair',
-    lede:
-      'PlayStation, Xbox, Nintendo Switch — HDMI ports, controllers, disc drives, thermal service. Full strip-downs welcome.',
-    whatWeFix: [
-      { title: 'HDMI port',         description: 'Bent or non-functional HDMI ports on PS4, PS5, Xbox and Switch — a common failure.' },
-      { title: 'Controllers',       description: 'Joystick drift, sticky buttons, broken triggers and battery faults.' },
-      { title: 'Disc drive',        description: 'Drive failures and laser replacements on disc-based consoles.' },
-      { title: 'Thermal service',   description: 'Strip down, clean, repaste — fixes loud fans and overheating shutdowns.' },
-      { title: 'Charging port',     description: 'USB-C charging port repairs on Switch and Switch Lite.' },
-      { title: 'Motherboard work',  description: 'No-power and no-video faults diagnosed at the board level.' },
-    ],
-    devices: ['PlayStation 5', 'PlayStation 4', 'Xbox Series X/S', 'Xbox One', 'Nintendo Switch', 'Nintendo Switch Lite'],
-    turnaround:
-      'Most console repairs are 2–5 business days. Joycon drift is usually same-day-next-day.',
-    warranty:
-      'Repairs are covered by a workmanship warranty quoted at drop-off.',
-    faqs: [
-      {
-        question: 'My Switch has joycon drift. Fixable?',
-        answer:
-          "Yes — joycon drift is one of the most common repairs we do. We replace the analog modules and the controller is back to factory feel. Usually next-day.",
-      },
-      {
-        question: 'My PS5 won\'t output video. Is it the HDMI port?',
-        answer:
-          "Most likely. HDMI port damage on the PS5 is one of the most common console faults we see — usually from a knocked cable. We can usually diagnose and quote within 24 hours.",
-      },
-    ],
-    related: ['phone-repair', 'laptop-repair', 'tablet-repair'],
+    related: ['phone-repair', 'laptop-repair', 'onsite-business'],
   },
 
   'onsite-business': {

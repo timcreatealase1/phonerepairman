@@ -113,13 +113,6 @@ export const services = [
     devices: ['Apple iPad', 'Samsung Galaxy Tab', 'Microsoft Surface', 'Lenovo Tab'],
   },
   {
-    slug: 'console-repair',
-    name: 'Gaming Console Repair',
-    short: 'PlayStation, Xbox and Nintendo — controllers, HDMI ports, fan replacements, full strip-downs.',
-    icon: 'gamepad',
-    devices: ['PlayStation', 'Xbox', 'Nintendo Switch'],
-  },
-  {
     slug: 'onsite-business',
     name: 'Onsite Business IT',
     short: 'Field-service technician for MSPs, mining IT, and small business — across the Upper Hunter.',
