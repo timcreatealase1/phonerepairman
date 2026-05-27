@@ -82,16 +82,21 @@ The "needs-update" rows are based on WebSearch result snippets, not page renders
 
 ## Year-founded — ✅ resolved 2026-05-27
 
-ASIC + ABN lookup confirms the canonical date:
+ASIC + ABN lookup gives the full picture. Three relevant registrations:
 
-- **Business name:** iPhone Repairman *(legacy trading name being consolidated to "Phone Repairman")*
-- **ABN:** 15 165 481 035
-- **Holder:** Timothy Noel Charles Ray
-- **Registered:** **26 March 2015**
-- **Address (then + now):** 22 Bridge St, Muswellbrook NSW 2333
+| Registration | Held by | Status | Dates |
+|---|---|---|---|
+| **iPhone Repairman** (ABN 15 165 481 035) | Timothy Noel Charles Ray (sole trader) | **Registered** (still active) | Registered 26 Mar 2015 · address 22 Bridge St |
+| **Timothy Enterprises Pty Ltd** (ACN 663 011 603 · ABN 37 663 011 603) | Tim Ray | **Registered** (active) | Incorporated Oct 2022 |
+| **Phone Repairman** (business name under Timothy Enterprises) | Timothy Enterprises Pty Ltd | **Cancelled** (Tim's accountant reinstating) | Registered 12 Oct 2022 · Cancelled 14 Nov 2024 |
+| **Create-A-Lase** (business name under Timothy Enterprises) | Timothy Enterprises Pty Ltd | Registered (active) | Registered 18 Oct 2022 |
 
-**Canonical year-established = 2015.** Site `site.ts yearFounded` updated. llms.txt updated. OG image regenerated with "EST. 2015". Photography brief + Claude-designer prompts + brand-pack NAP doc all updated.
+**Canonical year-established = 2015** — the iPhone Repairman sole-trader registration. Same Tim, same address, continuous trading since. The 2022 corporate restructure (creating Timothy Enterprises Pty Ltd and moving the trading name to "Phone Repairman" under it) is bookkeeping, not customer-facing reality. The Phone Repairman business name cancellation in Nov 2024 is a paperwork/renewal issue Tim's accountant is reinstating — it does not change the public-facing trading identity.
+
+**Public-facing claim everywhere:** "Phone Repairman · Est. 2015". Site `site.ts yearFounded` updated. llms.txt updated. OG image regenerated with "EST. 2015". Photography brief + Claude-designer prompts + brand-pack NAP doc all updated.
 
 **Still to fix manually inside the GBP console:**
 - Description text — change "Trusted in Muswellbrook since 2010" → "Trusted in Muswellbrook since 2015"
 - Opening date field — change from "July 2012" → **March 2015** (or just "2015" if month-level precision isn't available)
+
+**Internal: legal entity on invoices / contracts / B2B:** Timothy Enterprises Pty Ltd, ABN 37 663 011 603, trading as Phone Repairman. (Don't surface the parent-company name on the customer-facing marketing site — it's an invoice-level detail.)
