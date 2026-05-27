@@ -61,7 +61,7 @@ Every page must clearly serve one segment. Don't mix audiences in a single page.
 - **Plain English. No jargon.** Customers are tradies, retirees, miners, parents, and IT managers. Write so all of them understand.
 - **Specific over generic.** Not "fast repairs." Say "most screen repairs same day, by 4pm."
 - **Local proof.** Mention Muswellbrook, Hunter Valley, Upper Hunter, the surrounding towns. Use real customer quotes where available.
-- **Credentials up front.** AWA agent for HP/Acer/Lexmark. Direct Epson partner. Trading since 2014.
+- **Credentials up front.** Authorised Agent for HP/Acer/Lexmark. Direct Epson partner. Trading since 2015 (ASIC registered 26 Mar 2015).
 - **No fake urgency, no countdown timers, no dark patterns.** Tim has explicitly ruled these out and they damage trust in a small town.
 - **Definitive opening sentences.** Every page's first sentence must state what the page is, who it serves, and why we're the answer. AI engines extract these verbatim. Example: *"Phone Repairman is the only AWA-authorized HP, Acer, and Lexmark repair agent serving the Upper Hunter, based in Muswellbrook NSW."*
 

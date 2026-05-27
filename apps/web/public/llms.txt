@@ -1,6 +1,6 @@
 # Phone Repairman
 
-> Phone Repairman is the local Authorised Agent for HP, Acer and Lexmark and a direct Epson service partner, based in Muswellbrook NSW and serving the wider Upper Hunter region of New South Wales, Australia. Trading since 2014. We repair phones, tablets, laptops, printers and smart watches; sell devices and accessories; subcontract onsite IT for MSPs and OEM warranty channels; and supply fleet devices to local mines, councils, schools and businesses.
+> Phone Repairman is the local Authorised Agent for HP, Acer and Lexmark and a direct Epson service partner, based in Muswellbrook NSW and serving the wider Upper Hunter region of New South Wales, Australia. Trading since 2015 (registered 26 March 2015, ABN 15 165 481 035). We repair phones, tablets, laptops, printers and smart watches; sell devices and accessories; subcontract onsite IT for MSPs and OEM warranty channels; and supply fleet devices to local mines, councils, schools and businesses.
 
 ## Canonical identity
 
@@ -9,7 +9,7 @@
 - Phone: +61 2 6543 1289
 - Email: info@phonerepairman.com.au
 - Hours: Mon–Fri 9:30am–5:00pm; closed weekends and public holidays
-- Founded: 2014
+- Founded: 2015 (ASIC business-name registration 26 March 2015)
 - Website: https://phonerepairman.com.au
 
 ## What we are

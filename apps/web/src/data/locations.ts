@@ -40,7 +40,7 @@ export const locations: Location[] = [
     lede:
       'Phone Repairman is based at 22 Bridge Street, Muswellbrook — opposite the post office. Walk in any time during opening hours. Most common phone repairs same-day where parts are in stock.',
     character:
-      'Coal-mining and agricultural hub of the Upper Hunter, council seat for Muswellbrook Shire. Population ~12,000. We trade here year-round and have done since 2014.',
+      'Coal-mining and agricultural hub of the Upper Hunter, council seat for Muswellbrook Shire. Population ~12,000. We trade here year-round and have done since 2015.',
     faqs: [
       {
         question: 'Where exactly is the shop?',

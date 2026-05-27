@@ -15,7 +15,7 @@ const sharp = require('C:/Users/rayt7/Documents/phonerepairman/node_modules/.pnp
   <rect width="1200" height="630" fill="#fafaf7"/>
   <rect x="1080" y="0" width="120" height="630" fill="#0b70ff"/>
   <rect x="80" y="90" width="80" height="2" fill="#0b70ff"/>
-  <text x="80" y="128" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="3" fill="#4b5563">PHONE REPAIRMAN  ·  EST. 2014</text>
+  <text x="80" y="128" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="3" fill="#4b5563">PHONE REPAIRMAN  ·  EST. 2015</text>
   <text x="80" y="400" font-family="Inter, Helvetica Neue, sans-serif" font-weight="800" font-size="80" letter-spacing="-3" fill="#111827">Authorised device repair,</text>
   <text x="80" y="490" font-family="Inter, Helvetica Neue, sans-serif" font-weight="800" font-size="80" letter-spacing="-3" fill="#0b70ff">in your town.</text>
   <rect x="80" y="540" width="44" height="2" fill="#111827"/>

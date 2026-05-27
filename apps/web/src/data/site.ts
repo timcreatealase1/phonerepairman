@@ -7,7 +7,7 @@ export const site = {
   legalName: 'Phone Repairman',
   tagline: 'Device repairs, sales, and onsite IT for the Upper Hunter.',
   url: 'https://phonerepairman.com.au',
-  yearFounded: 2014,
+  yearFounded: 2015,
 
   // NAP
   phone: {

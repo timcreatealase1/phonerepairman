@@ -80,14 +80,18 @@
 
 The "needs-update" rows are based on WebSearch result snippets, not page renders. To finalise each row, open the URL manually and confirm the exact on-page values (some snippets don't surface the phone field — listed as `—`). The high-confidence updates are the ones where the legacy name "iPhone Repairman" or legacy phone "(02) 4058 1904" or legacy address "1B Finnegan Cres" appear in the snippet itself.
 
-## Year-founded inconsistency (flagged 2026-05-27)
+## Year-founded — ✅ resolved 2026-05-27
 
-Three different years appear across our own assets — pick one and reconcile everywhere:
+ASIC + ABN lookup confirms the canonical date:
 
-| Source | Says |
-|---|---|
-| Website (`apps/web/src/data/site.ts` + every page) | **Est. 2014** |
-| GBP "Opening date" field | **July 2012** |
-| GBP description text | **"Trusted in Muswellbrook since 2010"** |
+- **Business name:** iPhone Repairman *(legacy trading name being consolidated to "Phone Repairman")*
+- **ABN:** 15 165 481 035
+- **Holder:** Timothy Noel Charles Ray
+- **Registered:** **26 March 2015**
+- **Address (then + now):** 22 Bridge St, Muswellbrook NSW 2333
 
-Most likely 2014 is when Phone Repairman (current trading name) started, and 2010 / 2012 relate to the earlier iPhone Repairman business / shopfront. Pick one canonical year and update the site + GBP description so they match. Internal note for Tim.
+**Canonical year-established = 2015.** Site `site.ts yearFounded` updated. llms.txt updated. OG image regenerated with "EST. 2015". Photography brief + Claude-designer prompts + brand-pack NAP doc all updated.
+
+**Still to fix manually inside the GBP console:**
+- Description text — change "Trusted in Muswellbrook since 2010" → "Trusted in Muswellbrook since 2015"
+- Opening date field — change from "July 2012" → **March 2015** (or just "2015" if month-level precision isn't available)

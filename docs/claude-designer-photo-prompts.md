@@ -8,7 +8,7 @@
 
 ```
 You are generating hero photography for Phone Repairman, a device repair shop in
-Muswellbrook NSW Australia, trading since 2014. The owner is Tim Ray — a man with a
+Muswellbrook NSW Australia, trading since 2015. The owner is Tim Ray — a man with a
 full dark beard, dark hair, dark-framed glasses, mid-40s, wearing a Phone Repairman
 branded polo (dark navy with white side panels, "PHONE REPAIRMAN" wordmark across the
 left chest in blue + dark grey letters). His wife Honey works front-of-house —

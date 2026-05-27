@@ -6,7 +6,7 @@
 
 ## The business in one paragraph
 
-Phone Repairman is a device repair shop at **22 Bridge Street, Muswellbrook NSW**, trading since 2014. We're the local **Authorised Agent for HP, Acer, Lexmark** and a **direct Epson partner** — laptops, printers and workstations. Plus phones, tablets, consoles, and onsite IT for business customers across the Upper Hunter. Owner: **Tim Ray**.
+Phone Repairman is a device repair shop at **22 Bridge Street, Muswellbrook NSW**, trading since 2015. We're the local **Authorised Agent for HP, Acer, Lexmark** and a **direct Epson partner** — laptops, printers and workstations. Plus phones, tablets, consoles, and onsite IT for business customers across the Upper Hunter. Owner: **Tim Ray**.
 
 ## Brand visuals at a glance
 
