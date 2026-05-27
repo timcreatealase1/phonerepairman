@@ -89,7 +89,8 @@ ASIC + ABN lookup gives the full picture. Three relevant registrations:
 | **iPhone Repairman** (ABN 15 165 481 035) | Timothy Noel Charles Ray (sole trader) | **Registered** (still active) | Registered 26 Mar 2015 · address 22 Bridge St |
 | **Timothy Enterprises Pty Ltd** (ACN 663 011 603 · ABN 37 663 011 603) | Tim Ray | **Registered** (active) | Incorporated Oct 2022 |
 | **Phone Repairman** (business name under Timothy Enterprises) | Timothy Enterprises Pty Ltd | **Cancelled** (Tim's accountant reinstating) | Registered 12 Oct 2022 · Cancelled 14 Nov 2024 |
-| **Create-A-Lase** (business name under Timothy Enterprises) | Timothy Enterprises Pty Ltd | Registered (active) | Registered 18 Oct 2022 |
+| **Create-A-Lase** (sole trader, original) | Timothy Noel Charles Ray (ABN 15 165 481 035) | Registered | **Registered 5 July 2011** — predates Phone Repairman at the same 22 Bridge St address |
+| **Create-A-Lase** (under Timothy Enterprises) | Timothy Enterprises Pty Ltd | Registered (active) | Registered 18 Oct 2022 (parallel re-registration when the company was set up) |
 
 **Canonical year-established = 2015** — the iPhone Repairman sole-trader registration. Same Tim, same address, continuous trading since. The 2022 corporate restructure (creating Timothy Enterprises Pty Ltd and moving the trading name to "Phone Repairman" under it) is bookkeeping, not customer-facing reality. The Phone Repairman business name cancellation in Nov 2024 is a paperwork/renewal issue Tim's accountant is reinstating — it does not change the public-facing trading identity.
 
