@@ -103,6 +103,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 
   'tablet-repair': {
     slug: 'tablet-repair',
+    image: '/photography/tim-ipad-bench.jpg',
+    imageCaption: 'iPad screen replacement, Bridge Street workshop',
     lede:
       'iPad, Galaxy Tab, Surface and more — cracked glass, dead batteries and charging faults handled locally. Genuine parts where the OEM allows.',
     whatWeFix: [
