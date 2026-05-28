@@ -60,8 +60,8 @@
 
 ## Priority order for fixes
 
-1. ~~**Google Business Profile**~~ — ✅ **done 2026-05-27.** Verified canonical. Service area + attributes all in place.
-2. **Facebook Page** — rename "iPhone Repairman" to "Phone Repairman", change vanity URL from `phonescreenrepairman` if possible.
+1. ~~**Google My Business (GMB)**~~ — ✅ **done 2026-05-27/28.** Verified canonical. Description + opening date updated to 2015. Service area + attributes all in place.
+2. **Facebook Page** — ⏳ Tim submitted the rename "iPhone Repairman" → "Phone Repairman" on 2026-05-28, **awaiting Facebook approval**. The vanity URL `phonescreenrepairman` stays — the cleaner `phonerepairman` was already taken on Facebook. Privacy-policy URL on the FB profile updated from the legacy `http://www.iphonerepairman.com.au/privacy-policy/` to the new `https://phonerepairman.com.au/privacy-policy/` once the page is live.
 3. **Yellow Pages** — every NAP field is stale (legacy name, phone, address, domain, email). Highest visibility legacy directory in AU.
 4. **dlook** — three duplicate records, all stale. Request merge + update.
 5. **Localsearch** — quick win. Display name already correct; rename slug + confirm phone.

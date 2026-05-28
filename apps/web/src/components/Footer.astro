@@ -81,11 +81,14 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="border-t border-white/10">
-    <div class="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/60 sm:flex-row">
+    <div class="container-x flex flex-col items-center justify-between gap-3 py-5 text-xs text-white/60 sm:flex-row">
       <p class="font-mono uppercase tracking-[0.16em]">
         &copy; {year} {site.name} · {site.address.suburb} NSW · Est. {site.yearFounded}
       </p>
-      <p><a href={site.email.href} class="hover:text-white">{site.email.display}</a></p>
+      <p class="flex flex-wrap items-center justify-center gap-4">
+        <a href="/privacy-policy" class="font-mono uppercase tracking-[0.16em] hover:text-white">Privacy</a>
+        <a href={site.email.href} class="hover:text-white">{site.email.display}</a>
+      </p>
     </div>
   </div>
 </footer>

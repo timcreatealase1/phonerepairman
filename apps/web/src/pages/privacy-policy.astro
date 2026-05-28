@@ -1,0 +1,203 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import Eyebrow from '~/components/Eyebrow.astro';
+import { site } from '~/data/site';
+import { breadcrumbSchema } from '~/lib/seo/schema';
+
+const title = `Privacy Policy — ${site.name}`;
+const description = `How Phone Repairman collects, uses, stores and shares personal information. Australian Privacy Principles, your rights, and contact details for access or correction.`;
+
+const breadcrumbs = [
+  { name: 'Home',           href: site.url },
+  { name: 'Privacy Policy', href: `${site.url}/privacy-policy` },
+];
+
+const schemaNodes = [breadcrumbSchema(breadcrumbs)];
+
+const lastUpdated = '28 May 2026';
+---
+
+<BaseLayout title={title} description={description} schemaNodes={schemaNodes}>
+  <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Privacy Policy' }]} />
+
+  <section class="bg-paper">
+    <div class="container-x py-14 lg:py-20">
+      <div class="max-w-2xl">
+        <Eyebrow>Privacy Policy</Eyebrow>
+        <h1 class="mt-4 display-1 text-ink-900">How we handle your information.</h1>
+        <p class="mt-6 text-lg leading-relaxed text-ink-700">
+          What Phone Repairman collects when you bring a device in or contact us, why we collect it,
+          who we share it with, and how you can access or correct it. Written in plain English.
+        </p>
+        <p class="mt-4 font-mono text-xs uppercase tracking-wider text-ink-600">
+          Last updated · {lastUpdated}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-paper border-t border-line">
+    <div class="container-x">
+      <div class="prose-policy mx-auto max-w-3xl space-y-12 text-ink-700">
+
+        <div>
+          <Eyebrow>Who we are</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">Phone Repairman</h2>
+          <p class="mt-4 leading-relaxed">
+            Phone Repairman is a trading name of <strong class="text-ink-900">Timothy Enterprises Pty Ltd</strong>
+            (ACN 663 011 603 · ABN 37 663 011 603), based at <strong class="text-ink-900">22 Bridge Street, Muswellbrook NSW 2333</strong>.
+            We're a device repair business — phones, laptops, tablets, printers and onsite IT — serving Muswellbrook
+            and the Upper Hunter since 2015.
+          </p>
+          <p class="mt-4 leading-relaxed">
+            This page applies to anything you tell us, whether in-store, by phone, SMS, email, social media,
+            or via this website.
+          </p>
+        </div>
+
+        <div>
+          <Eyebrow>What we collect</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">Information we collect</h2>
+
+          <h3 class="mt-6 text-lg font-bold text-ink-900">When you bring in a device for repair</h3>
+          <ul class="mt-3 ml-6 list-disc space-y-2 leading-relaxed">
+            <li>Your name, phone number and email</li>
+            <li>Details of the device (make, model, serial number, IMEI where applicable)</li>
+            <li>A description of the fault or what you'd like done</li>
+            <li>An access code or PIN if it's needed to test the repair (we ask only when necessary)</li>
+            <li>Photographs of the device condition at intake</li>
+          </ul>
+
+          <h3 class="mt-6 text-lg font-bold text-ink-900">When you contact us</h3>
+          <p class="mt-3 leading-relaxed">
+            By phone, SMS, email or Facebook Messenger — we keep a record of the channel you used and
+            whatever information you choose to share (name, contact details, your enquiry).
+          </p>
+
+          <h3 class="mt-6 text-lg font-bold text-ink-900">When you visit this website</h3>
+          <p class="mt-3 leading-relaxed">
+            Our hosting provider (Cloudflare) collects standard technical request data — IP address, browser,
+            referring page, requested URL — for security, abuse prevention and performance monitoring. This is
+            aggregate technical data and isn't linked to any identity we hold.
+          </p>
+          <p class="mt-3 leading-relaxed">
+            The site doesn't use third-party tracking cookies, marketing pixels, or analytics tags that profile
+            you across the web. If that changes we'll update this page and disclose what's been added.
+          </p>
+        </div>
+
+        <div>
+          <Eyebrow>Why we collect it</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">How we use your information</h2>
+          <ul class="mt-4 ml-6 list-disc space-y-2 leading-relaxed">
+            <li>To repair, return and warrant your device</li>
+            <li>To contact you about your repair — when it's ready, if we need approval to proceed, or if we have questions</li>
+            <li>To process payment</li>
+            <li>To respond to enquiries you've sent us</li>
+            <li>To meet our obligations under the OEM warranty programs we're an authorised agent for (HP, Acer, Lexmark and Epson) — see "Who we share with" below</li>
+          </ul>
+        </div>
+
+        <div>
+          <Eyebrow>Sharing</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">Who we share it with</h2>
+
+          <ul class="mt-4 ml-6 list-disc space-y-3 leading-relaxed">
+            <li>
+              <strong class="text-ink-900">OEM warranty programs.</strong>
+              When you lodge a warranty repair for HP, Acer, Lexmark or Epson, we share the minimum data
+              needed to process the claim with the manufacturer's authorised service program. That's
+              typically your name, device serial number, and a description of the fault. Each manufacturer
+              has its own privacy policy.
+            </li>
+            <li>
+              <strong class="text-ink-900">Payment processors.</strong>
+              Card and contactless payments are handled by our terminal provider. We don't store credit-card
+              numbers on our systems.
+            </li>
+            <li>
+              <strong class="text-ink-900">Software we use to run the business.</strong>
+              Customer + repair records are stored in <strong class="text-ink-900">Zoho</strong> (CRM, Books,
+              Mail — Zoho has Australian / Asia-Pacific data centres). SMS messages we send you are delivered
+              via <strong class="text-ink-900">Twilio</strong>.
+            </li>
+            <li>
+              <strong class="text-ink-900">Government or law enforcement.</strong>
+              Only where required by law, on receipt of a valid request.
+            </li>
+          </ul>
+
+          <p class="mt-6 leading-relaxed">
+            <strong class="text-ink-900">We don't sell your information to anyone.</strong>
+            We don't share it with advertisers or list brokers.
+          </p>
+        </div>
+
+        <div>
+          <Eyebrow>Storage + retention</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">Where it's stored and for how long</h2>
+          <p class="mt-4 leading-relaxed">
+            Data is held by the providers listed above, encrypted at rest. We retain repair records for the
+            period required by Australian Consumer Law and tax obligations — typically seven years — and then
+            delete them. If you ask us to delete your records sooner, we will, subject to whatever we're
+            legally required to retain (for example, an invoice we've already issued).
+          </p>
+        </div>
+
+        <div>
+          <Eyebrow>Your rights</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">Access, correction and deletion</h2>
+          <p class="mt-4 leading-relaxed">You can ask us to:</p>
+          <ul class="mt-3 ml-6 list-disc space-y-2 leading-relaxed">
+            <li>Show you what personal information we hold about you</li>
+            <li>Correct anything that's inaccurate</li>
+            <li>Delete your records (subject to the retention obligations above)</li>
+            <li>Stop contacting you about anything except an active repair</li>
+          </ul>
+          <p class="mt-4 leading-relaxed">
+            Reach out to
+            <a href={site.email.href} class="font-semibold text-brand-500 hover:underline">{site.email.display}</a>
+            or call
+            <a href={site.phone.href} class="font-semibold text-brand-500 hover:underline">{site.phone.display}</a>.
+            We aim to respond within 30 days.
+          </p>
+        </div>
+
+        <div>
+          <Eyebrow>Complaints</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">If you're not happy with how we handle your information</h2>
+          <p class="mt-4 leading-relaxed">
+            Contact us first via the details above — we'd like the chance to fix it.
+            If we don't resolve it to your satisfaction, you can lodge a complaint with the
+            <strong class="text-ink-900">Office of the Australian Information Commissioner (OAIC)</strong> at
+            <a href="https://www.oaic.gov.au" target="_blank" rel="noopener" class="font-semibold text-brand-500 hover:underline">oaic.gov.au</a>.
+          </p>
+        </div>
+
+        <div>
+          <Eyebrow>Changes to this policy</Eyebrow>
+          <h2 class="mt-3 text-2xl font-bold text-ink-900">Updates</h2>
+          <p class="mt-4 leading-relaxed">
+            We may update this policy from time to time. The current version always lives at
+            <a href="/privacy-policy" class="font-semibold text-brand-500 hover:underline">phonerepairman.com.au/privacy-policy</a>.
+            Significant changes will be noted at the top of this page.
+          </p>
+        </div>
+
+        <div class="rounded-md border border-line bg-white p-6">
+          <p class="font-mono text-xs uppercase tracking-wider text-ink-600">Contact for privacy questions</p>
+          <p class="mt-3 leading-relaxed text-ink-900">
+            <strong>Phone Repairman</strong> · 22 Bridge Street, Muswellbrook NSW 2333<br />
+            <a href={site.phone.href} class="hover:underline">{site.phone.display}</a> ·
+            <a href={site.email.href} class="hover:underline">{site.email.display}</a>
+          </p>
+          <p class="mt-3 font-mono text-xs uppercase tracking-wider text-ink-600">
+            Last updated · {lastUpdated}
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
